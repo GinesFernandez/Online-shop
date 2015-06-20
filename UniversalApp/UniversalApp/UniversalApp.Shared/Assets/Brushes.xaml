@@ -1,0 +1,30 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UniversalApp.Assets">
+
+    <!--Theme COLORS-->
+    <Color x:Key="ThemeColor1">#e32523</Color> <!--red-->
+    <Color x:Key="ThemeColor2">#a20025</Color> <!--darkred-->
+    <Color x:Key="ThemeColor3">#1a171b</Color> <!--darkgray-->
+    <Color x:Key="ThemeColor4">#f2f2f2</Color> <!--white-->
+    <Color x:Key="ThemeColor5">#4e5921</Color> <!--green-->
+
+    <Color x:Key="HighlightLightColor">#FF3FA9F5</Color>
+    <Color x:Key="HighlightDarkColor">#FF2F99E5</Color>
+    <Color x:Key="DisabledColor">#FFA5A5A5</Color>
+
+    <!--BRUSHES-->
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource ThemeColor4}" />
+    <SolidColorBrush x:Key="ControlBackgroundBrush" Color="{StaticResource ThemeColor4}" />
+    <SolidColorBrush x:Key="ControlBrush" Color="{StaticResource ThemeColor5}" />
+    <SolidColorBrush x:Key="ControlDisabledBrush" Color="{StaticResource DisabledColor}" />
+    <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource ThemeColor2}" />
+    <SolidColorBrush x:Key="BorderBrush2" Color="{StaticResource ThemeColor1}" />
+    <SolidColorBrush x:Key="TitleBrush" Color="{StaticResource ThemeColor2}" />
+    <SolidColorBrush x:Key="TextBrush" Color="{StaticResource ThemeColor1}" />
+    <SolidColorBrush x:Key="TextBrush2" Color="{StaticResource ThemeColor3}" />
+
+    <SolidColorBrush x:Key="TextBoxMouseOverBorderBrush" Color="{StaticResource HighlightDarkColor}" />
+    <SolidColorBrush x:Key="TextBoxMouseOverInnerBorderBrush" Color="{StaticResource HighlightLightColor}" />
+</ResourceDictionary>

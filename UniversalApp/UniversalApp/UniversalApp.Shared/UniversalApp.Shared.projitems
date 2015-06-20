@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>ba1689fa-6176-4376-b96f-cc5c6dd00b29</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>UniversalApp</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Behaviors\ItemClickCommandBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Globals.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Helper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\StorageHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Dialog\DialogService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Dialog\DialogServiceEnums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Dialog\IDialogService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Navigation\NavigationEnums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Navigation\NavigationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Strings\Strings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Base\DelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Base\DelegateCommandAsync.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Base\ViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Base\ViewModelLocator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Base\PageBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Assets\Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Assets\Brushes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Assets\Fonts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Assets\Images.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Assets\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\es\Resources.resw" />
+  </ItemGroup>
+</Project>
