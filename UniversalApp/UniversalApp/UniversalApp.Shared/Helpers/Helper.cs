@@ -5,43 +5,6 @@ namespace UniversalApp.Helpers
 {
     public class Helper
     {
-        /// <summary>
-        /// Enciende la barra de progreso y deshabilita los controles pasados en la lista (IsEnabled = false)
-        /// </summary>
-        /// <param name="progressBar">ProgressBar</param>
-        /// <param name="controles">List de Control</param>
-        public static void ProgressON(ProgressBar progressBar, List<Control> controles = null)
-        {
-            progressBar.IsIndeterminate = true;
-
-            if (controles != null)
-            {
-                foreach (Control c in controles)
-                {
-                    c.IsEnabled = false;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Apaga la barra de progreso y habilita los controles pasados en la lista (IsEnabled = true)
-        /// </summary>
-        /// <param name="progressBar">ProgressBar</param>
-        /// <param name="controles">List de Control</param>
-        public static void ProgressOFF(ProgressBar progressBar, List<Control> controles = null)
-        {
-            progressBar.IsIndeterminate = false;
-            //progressText = string.Empty;
-
-            if (controles != null)
-            {
-                foreach (Control c in controles)
-                {
-                    c.IsEnabled = true;
-                }
-            }
-        }
-
         public static string Desnaturalizador(string cadena)
         {
             if (cadena != null)
