@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalApp.Windows", "Uni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalApp.WindowsPhone", "UniversalApp\UniversalApp.WindowsPhone\UniversalApp.WindowsPhone.csproj", "{56F06301-320F-4067-B9C7-82F92DD3F542}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2FD6AEF3-2A20-47B1-A220-BEC1C6CA6326}"
+	ProjectSection(SolutionItems) = preProject
+		UniversalAppDatabase.dacpac = UniversalAppDatabase.dacpac
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		UniversalApp\UniversalApp.Shared\UniversalApp.Shared.projitems*{56f06301-320f-4067-b9c7-82f92dd3f542}*SharedItemsImports = 4

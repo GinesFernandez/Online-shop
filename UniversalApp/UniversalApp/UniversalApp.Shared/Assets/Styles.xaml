@@ -188,10 +188,19 @@
         <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
     </Style>
 
+    <Style TargetType="ProgressBar" x:Key="DefaultProgressBarStyle">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Foreground" Value="{StaticResource ControlBrush}" />
+        <Setter Property="Canvas.ZIndex" Value="10" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+    </Style>
+    
     <!-- Implicit Styles -->
     <Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}" />
     <Style TargetType="HyperlinkButton" BasedOn="{StaticResource DefaultHyperlinkButtonStyle}" />
     <Style TargetType="TextBox" BasedOn="{StaticResource DefaultTextBoxStyle}" />
     <Style TargetType="TextBlock" BasedOn="{StaticResource DefaultTextBlockStyle}" />
-    <!--<Style TargetType="ProgressBar" BasedOn="{StaticResource DefaultProgressBarStyle}" />-->
+    <Style TargetType="ProgressBar" BasedOn="{StaticResource DefaultProgressBarStyle}" />
 </ResourceDictionary>

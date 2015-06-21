@@ -56,6 +56,16 @@
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox" />
     <RootType FullName="Windows.UI.Xaml.FrameworkElement">
       <RootProperty Name="MinHeight" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
+      <RootProperty Name="IsIndeterminate" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Canvas">
+      <RootMethod Name="GetZIndex" />
+      <RootMethod Name="SetZIndex" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Setter">
       <RootProperty Name="Property" />
@@ -118,10 +128,6 @@
       <RootProperty Name="KeyTime" />
       <RootProperty Name="Value" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Canvas">
-      <RootMethod Name="GetZIndex" />
-      <RootMethod Name="SetZIndex" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ContentControl">
       <RootProperty Name="Foreground" />
       <RootProperty Name="Content" />
@@ -179,14 +185,6 @@
       <RootProperty Name="Icon" />
       <RootProperty Name="Command" />
       <RootProperty Name="Visibility" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
-      <RootProperty Name="Background" />
-      <RootProperty Name="IsIndeterminate" />
-      <RootProperty Name="Foreground" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />

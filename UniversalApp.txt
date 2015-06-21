@@ -1,0 +1,55 @@
+Azure => Ginesoft@outlook.com
+Database:
+user => UniversalApp
+pass => Universal-1204
+
+CREATE TABLE [dbo].[Users]
+(
+	[UserId] INT IDENTITY (1, 1) NOT NULL,
+	[Email] NVARCHAR (100) NOT NULL,
+	[Password] NVARCHAR (MAX) NOT NULL,
+	[Title] NVARCHAR (50) NOT NULL,
+	[FirstName] NVARCHAR (50) NOT NULL,
+	[LastName] NVARCHAR (50) NOT NULL,
+	[Address] NVARCHAR (300) NOT NULL,
+	[ZipCode] NVARCHAR (50) NOT NULL,
+	[City] NVARCHAR (50) NOT NULL,
+	[Country] SMALLINT   NULL,
+	CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([UserId] ASC)
+)
+
+CREATE TABLE [dbo].[Products]
+(
+	[ProductId] INT IDENTITY (1, 1) NOT NULL,
+	[Name] NVARCHAR (50) NOT NULL,
+	[Prize] Money NOT NULL DEFAULT 0,
+	[Description] NVARCHAR (500) NULL,
+	[SmallPicture] NVARCHAR (MAX) NULL,
+	[Picture] NVARCHAR (MAX) NULL,
+	CONSTRAINT [PK_Products] PRIMARY KEY CLUSTERED ([ProductId] ASC)
+)
+
+CREATE TABLE [dbo].[ApplicationAttributes]
+(
+	[AttributeId] INT NOT NULL PRIMARY KEY,
+	[Description] NVARCHAR(50) NOT NULL,
+	[Value] NVARCHAR(100) NOT NULL,
+	[DataType] NVARCHAR(30) NOT NULL
+)
+CREATE TABLE [dbo].[Checkouts]
+(
+	[CheckoutId]               BIGINT            IDENTITY (1, 1) NOT NULL,
+	[UserId]        INT            NOT NULL,
+	[Status]		SMALLINT NOT NULL DEFAULT 0,
+	CONSTRAINT [PK_Checkouts] PRIMARY KEY CLUSTERED ([CheckoutId] ASC),
+	CONSTRAINT [FK_Checkouts_Users] FOREIGN KEY ([UserId]) REFERENCES [Users] ([UserId])
+)
+CREATE TABLE [dbo].[CheckoutsLines]
+(
+	[LineId] BIGINT IDENTITY (1, 1) NOT NULL,
+	[CheckoutId] BIGINT    NOT NULL,
+	[ProductId]        INT          NOT NULL,
+	CONSTRAINT [PK_CheckoutsLines] PRIMARY KEY CLUSTERED ([LineId] ASC),
+	CONSTRAINT [FK_CheckoutsLines_Checkouts] FOREIGN KEY ([CheckoutId]) REFERENCES [Checkouts] ([CheckoutId]),
+	CONSTRAINT [FK_CheckoutsLines_Products] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([ProductId])
+)

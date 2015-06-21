@@ -1,5 +1,7 @@
 C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\Redist\CommonConfiguration\Neutral\Microsoft.Xaml.Interactions.pri
 C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\Redist\CommonConfiguration\Neutral\Microsoft.Xaml.Interactivity.pri
-C:\Users\Ginés\Documents\Programacion\TryCatch\UniversalApp\packages\Unity.3.5.1405-prerelease\lib\win8\Microsoft.Practices.Unity.RegistrationByConvention.pri
-C:\Users\Ginés\Documents\Programacion\TryCatch\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Microsoft.Practices.ServiceLocation.pri
-C:\Users\Ginés\Documents\Programacion\TryCatch\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Microsoft.Practices.Unity.pri
+C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\packages\Unity.3.5.1405-prerelease\lib\win8\Microsoft.Practices.Unity.RegistrationByConvention.pri
+C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\packages\WindowsAzure.MobileServices.2.0.0-beta\lib\netcore45\Microsoft.WindowsAzure.Mobile.Ext.pri
+C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Microsoft.Practices.ServiceLocation.pri
+C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Microsoft.Practices.Unity.pri
+C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Microsoft.WindowsAzure.Mobile.pri

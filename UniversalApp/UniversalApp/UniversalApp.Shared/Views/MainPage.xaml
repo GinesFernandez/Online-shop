@@ -32,18 +32,13 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:Uid="bLogin" Label="Log in" Icon="Account" Command="{Binding LoginCommand}" Visibility="{Binding Logged, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            <AppBarButton x:Uid="bLogin" Label="Log in" Icon="Account" Command="{Binding LoginCommand}" Visibility="{Binding Logged, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
         </CommandBar>
     </Page.BottomAppBar>
 
     <Grid Background="{StaticResource BackgroundBrush}">
 
-        <ProgressBar x:Name="progressBar" Canvas.ZIndex="10"
-                     Background="Transparent"
-                     IsIndeterminate="{Binding IsBusy}"
-                     wp81:Height="20" win81:Height="40"
-                     Foreground="{StaticResource ControlBrush}" 
-                     VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+        <ProgressBar x:Name="progressBar" IsIndeterminate="{Binding IsBusy}" />
 
         <Grid Margin="10">
             <Grid.ColumnDefinitions>

@@ -13,13 +13,13 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:Uid="bLogin" Label="Log in" Icon="Account" Command="{Binding LoginCommand}" Visibility="{Binding Logged, Converter={StaticResource BoolToVisibilityConverter}}" />
+            <AppBarButton x:Uid="bLogin" Label="Log in" Icon="Account" Command="{Binding LoginCommand}" Visibility="{Binding Logged, Converter={StaticResource InverseBoolToVisibilityConverter}}" />
         </CommandBar>
     </Page.BottomAppBar>
 
     <Grid Background="{StaticResource BackgroundBrush}">
 
-        <ProgressBar x:Name="progressBar" Canvas.ZIndex="10" Background="Transparent" IsIndeterminate="{Binding IsBusy}" Foreground="{StaticResource ControlBrush}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" />
+        <ProgressBar x:Name="progressBar" IsIndeterminate="{Binding IsBusy}" />
 
         <Grid Margin="10">
             <Grid.ColumnDefinitions>

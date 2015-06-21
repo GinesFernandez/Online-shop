@@ -19,7 +19,7 @@
 
     <Grid Background="{StaticResource BackgroundBrush}">
 
-        <ProgressBar x:Name="progressBar" Canvas.ZIndex="10" Background="Transparent" IsIndeterminate="{Binding IsBusy}" Foreground="{StaticResource ControlBrush}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="20" />
+        <ProgressBar x:Name="progressBar" IsIndeterminate="{Binding IsBusy}" Background="Black" />
 
         <Grid Margin="10">
             <Grid.ColumnDefinitions>

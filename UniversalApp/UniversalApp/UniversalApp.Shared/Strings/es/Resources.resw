@@ -141,4 +141,10 @@
   <data name="_AppName" xml:space="preserve">
     <value>Tienda de Kaotiña</value>
   </data>
+  <data name="ErrorAttributeFormat" xml:space="preserve">
+    <value>Error, tax attribute is not in correct format</value>
+  </data>
+  <data name="ErrorConnection" xml:space="preserve">
+    <value>Connection Error, please check your internet connection..</value>
+  </data>
 </root>

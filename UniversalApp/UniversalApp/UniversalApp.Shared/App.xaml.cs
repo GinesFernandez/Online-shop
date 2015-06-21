@@ -1,13 +1,10 @@
-﻿using UniversalApp.Services.Dialogs;
-using UniversalApp.Strings;
-using UniversalApp.Views;
+﻿using Microsoft.WindowsAzure.MobileServices;
 using System;
+using UniversalApp.Views;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Navigation;
 
 // La plantilla Aplicación vacía está documentada en http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -18,6 +15,10 @@ namespace UniversalApp
     /// </summary>
     public sealed partial class App : Application
     {
+        public static MobileServiceClient MobileService = new MobileServiceClient(
+            "https://universalapp.azure-mobile.net/",
+            "qUpSCvCsiCqHmAZCRSDKLjNBfUGEaX63");
+
 #if WINDOWS_PHONE_APP
         private TransitionCollection transitions;
 #endif
@@ -68,6 +69,8 @@ namespace UniversalApp
                 Window.Current.Content = rootFrame;
             }
 
+            //LoadResources();
+
             if (rootFrame.Content == null)
             {
 #if WINDOWS_PHONE_APP
@@ -97,6 +100,8 @@ namespace UniversalApp
             // Asegurarse de que la ventana actual está activa.
             Window.Current.Activate();
         }
+
+
 
 #if WINDOWS_PHONE_APP
         /// <summary>
