@@ -11,6 +11,7 @@ namespace UniversalApp.ViewModels.Base
         {
             _container = new UnityContainer();
             _container.RegisterType<MainPageViewModel>();
+            _container.RegisterType<LoginViewModel>();
             _container.RegisterType<IDialogService, DialogService>(new ContainerControlledLifetimeManager());
         }
 
@@ -18,5 +19,20 @@ namespace UniversalApp.ViewModels.Base
         {
             get { return _container.Resolve<MainPageViewModel>(); }
         }
+
+        public LoginViewModel LoginViewModel
+        {
+            get { return _container.Resolve<LoginViewModel>(); }
+        }
+
+        //public DetailsViewModel DetailsViewModel
+        //{
+        //    get { return _container.Resolve<DetailsViewModel>(); }
+        //}
+
+        //public CheckoutViewModel CheckoutViewModel
+        //{
+        //    get { return _container.Resolve<CheckoutViewModel>(); }
+        //}
     }
 }

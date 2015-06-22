@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UniversalApp.Model;
 
 namespace UniversalApp
 {
@@ -8,7 +9,7 @@ namespace UniversalApp
     {
         internal static bool ResourcesLoaded;
 
-        public static object CurrentUser { get; set; }
+        public static Users CurrentUser { get; set; }
 
         private static float _taxPercentage = 18;
         public static float TaxPercentage

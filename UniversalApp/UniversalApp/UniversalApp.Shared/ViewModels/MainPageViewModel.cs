@@ -17,6 +17,10 @@ namespace UniversalApp.ViewModels
     {
         #region Declarations
         /////////////////////////////////////////////////////////////////
+        private const int ItemsPerPage = 10;
+
+        private int _currentPage;
+
         private readonly IDialogService _dialogService;
 
         /////////////////////////////////////////////////////////////////
@@ -44,6 +48,11 @@ namespace UniversalApp.ViewModels
             }
         }
 
+        public string CurrentUserText
+        {
+            get { return Globals.CurrentUser != null ? Globals.CurrentUser.FirstName : Cadenas.NotLogged; }
+        }
+
         /////////////////////////////////////////////////////////////////
         #endregion
 
@@ -69,7 +78,7 @@ namespace UniversalApp.ViewModels
         }
         public void LoginCommandDelegate()
         {
-            NavigationService.NavigateToPage(ViewsEnum.LoginPage);
+            NavigationService.NavigateToPage(ViewsEnum.LoginView, Globals.CurrentUser);
         }
 
         /////////////////////////////////////////////////////////////////
@@ -85,6 +94,7 @@ namespace UniversalApp.ViewModels
         public override Task OnNavigatedTo(NavigationEventArgs args)
         {
             //LoginCommand.RaiseCanExecuteChanged();
+            //RaisePropertyChanged("CurrentUserText");
 
             if (!Globals.ResourcesLoaded)
                 LoadResources();
@@ -139,7 +149,7 @@ namespace UniversalApp.ViewModels
 
             try
             {
-                var atribsList = await App.MobileService.GetTable<Products>().Take(10).ToListAsync();
+                var atribsList = await App.MobileService.GetTable<Products>().Skip(ItemsPerPage* _currentPage).Take(ItemsPerPage).ToListAsync();
 
                 CollectionProducts.AddRange(atribsList);
                 RaisePropertyChanged("CollectionProducts");

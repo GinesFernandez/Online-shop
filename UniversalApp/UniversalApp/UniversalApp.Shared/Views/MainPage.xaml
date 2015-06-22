@@ -9,7 +9,6 @@
     xmlns:base="using:UniversalApp.Views.Base"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:media="using:Microsoft.Xaml.Interactions.Media"
     xmlns:converters="using:UniversalApp.Converters"
     
     DataContext="{Binding MainPageViewModel, Source={StaticResource Locator}}"
@@ -20,11 +19,6 @@
     mc:ProcessContent="win81:* wp81:*">
 
     <Page.Resources>
-        <local:Globals x:Key="AppGlobals"/>
-
-        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
-        <converters:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
-        
     </Page.Resources>
 
     <i:Interaction.Behaviors>
@@ -32,7 +26,12 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:Uid="bLogin" Label="Log in" Icon="Account" Command="{Binding LoginCommand}" Visibility="{Binding Logged, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+            <!--<AppBarButton x:Uid="bLogin" Label="Log in" Command="{Binding LoginCommand}" Visibility="{Binding Logged, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                <AppBarButton.Icon>
+                    <PathIcon Data="{StaticResource IconLogin}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
+                </AppBarButton.Icon>
+            </AppBarButton>-->
+
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -43,18 +42,36 @@
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="6*"/>
-                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="5*"/>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock x:Name="oTitle" x:Uid="oTitle" Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Text="Kaotiña's Store"
+            <Grid>
+                <TextBlock x:Name="oTitle" x:Uid="oTitle" Grid.Row="0" Grid.Column="0" Text="Kaotiña's Store"
                        Style="{StaticResource TitleTextBlockStyle}"
-                       Foreground="{StaticResource TitleBrush}" />
+                       Foreground="{StaticResource TitleBrush}"
+                       HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+
+                    <TextBlock x:Uid="oLoged" Text="{Binding CurrentUserText}" Style="{StaticResource HeaderTextBlockStyle}"
+                               VerticalAlignment="Center" Margin="0,0,4,0"
+                               ToolTipService.ToolTip="logged as"/>
+
+                    <HyperlinkButton Grid.Row="0" Grid.Column="0" x:Uid="bLogin"
+                                    ToolTipService.ToolTip="log in"
+                                    Command="{Binding LoginCommand}">
+                        <Path Data="{StaticResource IconLogin}"
+                              Stretch="Uniform"
+                              Fill="{StaticResource BorderBrush}">
+                        </Path>
+                    </HyperlinkButton>
+                </StackPanel>
+
+            </Grid>
+
 
         </Grid>
 

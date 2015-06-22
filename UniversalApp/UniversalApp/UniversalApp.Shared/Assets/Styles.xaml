@@ -89,39 +89,20 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="HyperlinkButton">
-                    <Grid Background="{TemplateBinding Background}" >
+                    <Grid Background="{TemplateBinding Background}" VerticalAlignment="Center">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal"/>
-                                <VisualState x:Name="MouseOver">
+                                <VisualState x:Name="Normal">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="UnderlineTextBlock">
-                                            <DiscreteObjectKeyFrame KeyTime="0">
-                                                <DiscreteObjectKeyFrame.Value>
-                                                    <Visibility>Visible</Visibility>
-                                                </DiscreteObjectKeyFrame.Value>
-                                            </DiscreteObjectKeyFrame>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenterWrapperColor" Storyboard.TargetProperty="Color">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource HighlightLightColor}"/>
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="UnderlineTextBlock">
-                                            <DiscreteObjectKeyFrame KeyTime="0">
-                                                <DiscreteObjectKeyFrame.Value>
-                                                    <Visibility>Visible</Visibility>
-                                                </DiscreteObjectKeyFrame.Value>
-                                            </DiscreteObjectKeyFrame>
-                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0:0:0.2" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="ContentPresenter"/>
+                                        <DoubleAnimation Duration="0:0:0.2" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="ContentPresenter"/>
+                                        <DoubleAnimation Duration="0:0:0.2" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border"/>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="DisabledOverlay">
-                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="disableOverlay">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
                                                 <DiscreteObjectKeyFrame.Value>
                                                     <Visibility>Visible</Visibility>
                                                 </DiscreteObjectKeyFrame.Value>
@@ -129,35 +110,42 @@
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
-                            </VisualStateGroup>
-                            <VisualStateGroup x:Name="FocusStates">
-                                <VisualState x:Name="Focused">
+                                <VisualState x:Name="MouseOver">
                                     <Storyboard>
-                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualElement">
-                                            <SplineDoubleKeyFrame KeyTime="0" Value="1"/>
-                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0:0:0.2" To="1.4" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="ContentPresenter"/>
+                                        <DoubleAnimation Duration="0:0:0.2" To="1.4" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="ContentPresenter"/>
+                                        <DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border"/>
                                     </Storyboard>
                                 </VisualState>
-                                <VisualState x:Name="Unfocused"/>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.2" To="1.4" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="ContentPresenter"/>
+                                        <DoubleAnimation Duration="0:0:0.2" To="1.4" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="ContentPresenter"/>
+                                        <DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border"/>
+                                    </Storyboard>
+                                </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <TextBlock x:Name="UnderlineTextBlock" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" Text="{TemplateBinding Content}" Visibility="Collapsed" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                            <TextBlock.Foreground>
-                                <SolidColorBrush Color="{StaticResource HighlightDarkColor}"/>
-                            </TextBlock.Foreground>
-                        </TextBlock>
-                        <TextBlock x:Name="DisabledOverlay" Foreground="{StaticResource ControlDisabledBrush}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" Text="{TemplateBinding Content}" Visibility="Collapsed" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Canvas.ZIndex="1"/>
-                        <ContentControl>
-                            <ContentControl.Foreground>
-                                <SolidColorBrush x:Name="ContentPresenterWrapperColor" Color="{StaticResource HighlightDarkColor}" />
-                            </ContentControl.Foreground>
-                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </ContentControl>
-                        <Rectangle x:Name="FocusVisualElement" IsHitTestVisible="false" Opacity="0" StrokeThickness="1">
+
+                        <Grid Width="48" Height="48" VerticalAlignment="Center">
+                            <Path x:Name="border"
+                                  Data="M50.5,4.7500001C25.232973,4.75 4.75,25.232973 4.7500001,50.5 4.75,75.767029 25.232973,96.25 50.5,96.25 75.767029,96.25 96.25,75.767029 96.25,50.5 96.25,25.232973 75.767029,4.75 50.5,4.7500001z M50.5,0C78.390381,0 101,22.609621 101,50.5 101,78.390381 78.390381,101 50.5,101 22.609621,101 0,78.390381 0,50.5 0,22.609621 22.609621,0 50.5,0z"
+                                  Stretch="Fill" Fill="{StaticResource BorderBrush}" Visibility="Visible" />
+                            <ContentPresenter x:Name="ContentPresenter"
+                                              HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              Width="30" Height="30" Content="{TemplateBinding Content}" RenderTransformOrigin="0.5,0.5">
+                                <ContentPresenter.RenderTransform>
+                                    <CompositeTransform ScaleY="1" ScaleX="1"/>
+                                </ContentPresenter.RenderTransform>
+                            </ContentPresenter>
+                            <Ellipse x:Name="container" Fill="Transparent" Stretch="Fill"/>
+                            <Ellipse x:Name="disableOverlay" Visibility="Collapsed" Stretch="Fill" Opacity="0.5" Fill="Gray"/>
+                        </Grid>
+                        <!--<Rectangle x:Name="FocusVisualElement" IsHitTestVisible="false" Opacity="0" StrokeThickness="1">
                             <Rectangle.Stroke>
                                 <SolidColorBrush Color="{StaticResource HighlightLightColor}"/>
                             </Rectangle.Stroke>
-                        </Rectangle>
+                        </Rectangle>-->
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -167,7 +155,7 @@
     <Style TargetType="TextBlock" x:Key="DefaultTextBlockStyle">
         <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
         <Setter Property="FontFamily" Value="{StaticResource ContentFontFamily}"/>
-        <Setter Property="FontSize" Value="{StaticResource ContentFontSize}"/>
+        <Setter Property="FontSize" Value="{StaticResource LabelFontSize}"/>
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 
@@ -175,6 +163,12 @@
         <Setter Property="Foreground" Value="{StaticResource TitleBrush}"/>
         <Setter Property="FontFamily" Value="{StaticResource HeaderFontFamily}"/>
         <Setter Property="FontSize" Value="{StaticResource ApplicationNameFontSize}"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="HeaderTextBlockStyle">
+        <Setter Property="Foreground" Value="{StaticResource TitleBrush}"/>
+        <Setter Property="FontFamily" Value="{StaticResource HeaderFontFamily}"/>
+        <Setter Property="FontSize" Value="{StaticResource HeaderFontSize}"/>
     </Style>
 
     <Style TargetType="TextBox" x:Key="DefaultTextBoxStyle">

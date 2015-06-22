@@ -1,12 +1,10 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 namespace UniversalApp.ViewModels.Base
 {
-    public abstract class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModelBase : ModelBase
     {
         private Frame _appFrame;
         private bool _isBusy;
@@ -32,14 +30,6 @@ namespace UniversalApp.ViewModels.Base
 
         public abstract Task OnNavigatedFrom(NavigationEventArgs args);
         public abstract Task OnNavigatedTo(NavigationEventArgs args);
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void RaisePropertyChanged([CallerMemberName]string propertyName = "")
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         internal void SetAppFrame(Frame viewFrame)
         {

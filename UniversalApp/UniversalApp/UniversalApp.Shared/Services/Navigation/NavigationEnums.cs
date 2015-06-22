@@ -7,8 +7,8 @@ namespace UniversalApp.Services.Navigation
     public enum ViewsEnum
     {
         MainPage = 0,
-        LoginPage = 1,
-        DetailPage = 2,
-        BasketPage = 3
+        LoginView = 1,
+        DetailsView = 2,
+        CheckoutView = 3
     }
 }

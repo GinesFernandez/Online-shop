@@ -110,3 +110,4 @@ C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\Univers
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\obj\Debug\XamlSaveStateFile.xml
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\obj\Debug\UniversalApp.WindowsPhone.exe
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\obj\Debug\UniversalApp.WindowsPhone.pdb
+C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\obj\Debug\preprocessedxaml\Views\LoginView.xaml

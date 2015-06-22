@@ -119,7 +119,6 @@ C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\Univers
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\System.Net.Http.Extensions.xml
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\System.Net.Http.Primitives.xml
-C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\UniversalApp.Windows.csprojResolveAssemblyReference.cache
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\preprocessedxaml\Views\MainPage.xaml
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\App.g.i.cs
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\App.g.cs
@@ -140,8 +139,6 @@ C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\Univers
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Assets\Images.xaml
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\App.xbf
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Assets\Brushes.xbf
-C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Assets\Fonts.xbf
-C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Assets\Images.xbf
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\XamlSaveStateFile.xml
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Assets\Styles.xaml
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Views\MainPage.xaml
@@ -172,6 +169,14 @@ C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\Univers
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Microsoft.Practices.Unity.RegistrationByConvention.pri.xml
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Microsoft.WindowsAzure.Mobile.Ext.pri.xml
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\ProjectArchitectures.txt
+C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\preprocessedxaml\Views\LoginView.xaml
+C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\Views\LoginView.xbf
+C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Views\LoginView.g.i.cs
+C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Views\LoginView.g.cs
+C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Views\LoginView.xaml
+C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Views\LoginView.xbf
+C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Assets\Fonts.xbf
+C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Assets\Images.xbf
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Assets\Styles.xbf
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles.intermediate

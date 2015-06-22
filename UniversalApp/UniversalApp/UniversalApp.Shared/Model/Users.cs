@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UniversalApp.Model
 {
-    class Users
+    public class Users
     {
         [JsonProperty(PropertyName = "id")]
         public Guid Id { get; set; }

@@ -41,14 +41,14 @@ namespace UniversalApp.Services.Navigation
             {
                 switch (targetview)
                 {
-                    case ViewsEnum.LoginPage:
-                        //NavigateToPage(typeof(LoginPage), parameter);
+                    case ViewsEnum.LoginView:
+                        NavigateToPage(typeof(LoginView), parameter);
                         return true;
-                    case ViewsEnum.DetailPage:
-                        //NavigateToPage(typeof(DetailPage), parameter);
+                    case ViewsEnum.DetailsView:
+                        //NavigateToPage(typeof(DetailsView), parameter);
                         return true;
-                    case ViewsEnum.BasketPage:
-                        //NavigateToPage(typeof(BasketPage), parameter);
+                    case ViewsEnum.CheckoutView:
+                        //NavigateToPage(typeof(CheckoutView), parameter);
                         return true;
                     default:
                         NavigateToPage(typeof(MainPage), parameter);

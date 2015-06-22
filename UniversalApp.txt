@@ -1,0 +1,4 @@
+Azure => Ginesoft@outlook.com
+Database:
+user => UniversalApp
+pass => Universal-1204
