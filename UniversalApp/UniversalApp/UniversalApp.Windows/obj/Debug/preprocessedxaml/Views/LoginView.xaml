@@ -4,6 +4,14 @@
 
     </Page.Resources>
 
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Uid="bBack" Label="Back" Icon="Back" Command="{Binding BackCommand}">
+            </AppBarButton>
+
+        </CommandBar>
+    </Page.BottomAppBar>
+
     <Grid Background="{StaticResource BackgroundBrush}">
 
         <ProgressBar x:Name="progressBar" IsIndeterminate="{Binding IsBusy}" />
@@ -32,9 +40,20 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <ScrollViewer Grid.Row="1" Grid.Column="1">
+                <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                     <StackPanel>
-                        <TextBlock Text="Login" />
+                        <TextBlock Text="Login" Style="{StaticResource HeaderTextBlockStyle}" />
+
+                        <HyperlinkButton Grid.Row="0" Grid.Column="0" x:Uid="bLogin" ToolTipService.ToolTip="log in" Command="{Binding LoginCommand}">
+                            <Path Data="{StaticResource IconLogin}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
+                            </Path>
+                        </HyperlinkButton>
+                        
+                        <HyperlinkButton x:Uid="bRegister" ToolTipService.ToolTip="register as new user" Command="{Binding NavRegisterCommand}">
+                            <Path Data="{StaticResource IconAddUser}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
+                            </Path>
+                        </HyperlinkButton>
+                        
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
@@ -52,9 +71,18 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <ScrollViewer Grid.Row="1" Grid.Column="1">
+                <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                     <StackPanel>
-                        <TextBlock Text="Registering" />
+                        <TextBlock Text="Registering" Style="{StaticResource HeaderTextBlockStyle}" />
+
+                        <HyperlinkButton x:Uid="bRegister" ToolTipService.ToolTip="register as new user" Command="{Binding RegisterCommand}">
+                            <Path Data="{StaticResource IconAddUser}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
+                            </Path>
+                        </HyperlinkButton>
+                        <HyperlinkButton x:Uid="bCancelRegister" ToolTipService.ToolTip="cancel registering" Command="{Binding CancelRegisterCommand}">
+                            <Path Data="{StaticResource IconCancel}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
+                            </Path>
+                        </HyperlinkButton>
                     </StackPanel>
                 </ScrollViewer>
                 

@@ -147,4 +147,7 @@
   <data name="NotLogged" xml:space="preserve">
     <value>No logueado</value>
   </data>
+  <data name="bBack.Label" xml:space="preserve">
+    <value>Volver</value>
+  </data>
 </root>

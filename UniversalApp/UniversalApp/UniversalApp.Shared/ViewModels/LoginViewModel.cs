@@ -1,15 +1,12 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using System;
 using System.Threading.Tasks;
 using UniversalApp.Model;
 using UniversalApp.Services.Dialogs;
 using UniversalApp.Services.Navigation;
+using UniversalApp.Strings;
 using UniversalApp.ViewModels.Base;
 using Windows.UI.Xaml.Navigation;
-using Microsoft.WindowsAzure.MobileServices;
-using UniversalApp.Strings;
 
 namespace UniversalApp.ViewModels
 {
@@ -39,6 +36,14 @@ namespace UniversalApp.ViewModels
             }
         }
 
+        public bool IsRegisteringValid
+        {
+            get
+            {
+                return true; //TODO:
+            }
+        }
+
         private string _name;
         public string Name
         {
@@ -49,6 +54,7 @@ namespace UniversalApp.ViewModels
                 {
                     _name = value;
                     RaisePropertyChanged();
+                    LoginCommand.RaiseCanExecuteChanged();
                 }
             }
         }
@@ -63,6 +69,7 @@ namespace UniversalApp.ViewModels
                 {
                     _password = value;
                     RaisePropertyChanged();
+                    LoginCommand.RaiseCanExecuteChanged();
                 }
             }
         }
@@ -81,6 +88,22 @@ namespace UniversalApp.ViewModels
 
         #region Commands
         /////////////////////////////////////////////////////////////////
+
+        private DelegateCommand _backCommand;
+        public DelegateCommand BackCommand
+        {
+            get { return _backCommand = _backCommand ?? new DelegateCommand(BackCommandDelegate, CanBackCommandDelegate); }
+        }
+        public bool CanBackCommandDelegate()
+        {
+            return !IsBusy;
+        }
+        public void BackCommandDelegate()
+        {
+            if (!IsBusy)
+                NavigationService.NavigateToPage(ViewsEnum.MainPage);
+        }
+
         private DelegateCommand _loginCommand;
         public DelegateCommand LoginCommand
         {
@@ -88,13 +111,55 @@ namespace UniversalApp.ViewModels
         }
         public bool CanLoginCommandDelegate()
         {
-            return true;
+            return !String.IsNullOrWhiteSpace(Password) && !String.IsNullOrWhiteSpace(Name);
         }
         public void LoginCommandDelegate()
         {
-            NavigationService.NavigateToPage(ViewsEnum.LoginView);
+            //NavigationService.NavigateToPage(ViewsEnum.MainPageView);
         }
 
+        private DelegateCommand _navRegisterCommand;
+        public DelegateCommand NavRegisterCommand
+        {
+            get { return _navRegisterCommand = _navRegisterCommand ?? new DelegateCommand(NavRegisterCommandDelegate, CanNavRegisterCommandDelegate); }
+        }
+        public bool CanNavRegisterCommandDelegate()
+        {
+            return true;
+        }
+        public void NavRegisterCommandDelegate()
+        {
+            IsRegistering = true;
+        }
+
+        private DelegateCommand _registerCommand;
+        public DelegateCommand RegisterCommand
+        {
+            get { return _registerCommand = _registerCommand ?? new DelegateCommand(RegisterCommandDelegate, CanRegisterCommandDelegate); }
+        }
+        public bool CanRegisterCommandDelegate()
+        {
+            return IsRegisteringValid;
+        }
+        public void RegisterCommandDelegate()
+        {
+            //NavigationService.NavigateToPage(ViewsEnum.MainPageView);
+        }
+
+
+        private DelegateCommand _cancelRegisterCommand;
+        public DelegateCommand CancelRegisterCommand
+        {
+            get { return _cancelRegisterCommand = _cancelRegisterCommand ?? new DelegateCommand(CancelRegisterCommandDelegate, CanCancelRegisterCommandDelegate); }
+        }
+        public bool CanCancelRegisterCommandDelegate()
+        {
+            return true;
+        }
+        public void CancelRegisterCommandDelegate()
+        {
+            IsRegistering = false;
+        }
         /////////////////////////////////////////////////////////////////
         #endregion
 
@@ -117,7 +182,7 @@ namespace UniversalApp.ViewModels
             return null;
         }
 
-        
+
 
         private async void LoadUser()
         {
@@ -127,7 +192,7 @@ namespace UniversalApp.ViewModels
             {
                 //var atribsList = await App.MobileService.GetTable<Products>().Skip(ItemsPerPage * _currentPage).Take(ItemsPerPage).ToListAsync();
 
-                
+
 
                 IsBusy = false;
             }
