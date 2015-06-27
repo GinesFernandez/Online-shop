@@ -16,7 +16,6 @@
 
     <!--BRUSHES-->
     <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource ThemeColor4}" />
-    <SolidColorBrush x:Key="ControlBackgroundBrush" Color="{StaticResource ThemeColor4}" />
     <SolidColorBrush x:Key="ControlBrush" Color="{StaticResource ThemeColor5}" />
     <SolidColorBrush x:Key="ControlDisabledBrush" Color="{StaticResource DisabledColor}" />
     <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource ThemeColor2}" />

@@ -16,9 +16,11 @@ namespace UniversalApp.Strings
         //Errors Messages
         public static readonly string ErrorConnection = ResourceManager.Current.MainResourceMap.GetValue("Resources/ErrorConnection", ResourceContext.GetForCurrentView()).ValueAsString;
         public static readonly string ErrorAttributeFormat = ResourceManager.Current.MainResourceMap.GetValue("Resources/ErrorAttributeFormat", ResourceContext.GetForCurrentView()).ValueAsString;
-
-        public static readonly string NotLogged = ResourceManager.Current.MainResourceMap.GetValue("Resources/NotLogged", ResourceContext.GetForCurrentView()).ValueAsString;
+        public static readonly string ErrorEmailNotValid = ResourceManager.Current.MainResourceMap.GetValue("Resources/ErrorEmailNotValid", ResourceContext.GetForCurrentView()).ValueAsString;
+        public static readonly string ErrorUserNotExists = ResourceManager.Current.MainResourceMap.GetValue("Resources/ErrorUserNotExists", ResourceContext.GetForCurrentView()).ValueAsString;
+        public static readonly string ErrorIncorrectPassword = ResourceManager.Current.MainResourceMap.GetValue("Resources/ErrorIncorrectPassword", ResourceContext.GetForCurrentView()).ValueAsString;
         
+        public static readonly string NotLogged = ResourceManager.Current.MainResourceMap.GetValue("Resources/NotLogged", ResourceContext.GetForCurrentView()).ValueAsString;
         
     }
 }

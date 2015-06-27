@@ -150,4 +150,19 @@
   <data name="bBack.Label" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="ErrorEmailNotValid" xml:space="preserve">
+    <value>The email is not valid, please correct it</value>
+  </data>
+  <data name="ErrorIncorrectPassword" xml:space="preserve">
+    <value>The password is not correct</value>
+  </data>
+  <data name="ErrorUserNotExists" xml:space="preserve">
+    <value>The user {0} doesn't exist</value>
+  </data>
+  <data name="oLogin.Text" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
+  <data name="oRegister.Text" xml:space="preserve">
+    <value>Registrarse como nuevo usuario</value>
+  </data>
 </root>

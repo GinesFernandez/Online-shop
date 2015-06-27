@@ -100,8 +100,11 @@ namespace UniversalApp.ViewModels
                 LoadResources();
 
             LoadProducts();
-
             return null;
+        }
+
+        public override void EnableDisableControls(bool enabled = true)
+        {
         }
 
         /// <summary>
@@ -109,7 +112,7 @@ namespace UniversalApp.ViewModels
         /// </summary>
         private async void LoadResources()
         {
-            IsBusy = true;
+            ProgressBarONOFF();
 
             try
             {
@@ -121,23 +124,23 @@ namespace UniversalApp.ViewModels
                     Globals.TaxPercentage = float.Parse(atribTax.Value);
 
                 Globals.ResourcesLoaded = true;
-                IsBusy = false;
+                ProgressBarONOFF(false);
             }
             catch (MobileServiceInvalidOperationException azureExc)
             {
-                IsBusy = false;
+                ProgressBarONOFF(false);
                 IDialogService dialogService = new DialogService();
                 var dialogResult = dialogService.ShowAsync(MessageBoxButton.OK, Cadenas.ErrorConnection);
             }
             catch (FormatException formatExc)
             {
-                IsBusy = false;
+                ProgressBarONOFF(false);
                 IDialogService dialogService = new DialogService();
                 var dialogResult = dialogService.ShowAsync(MessageBoxButton.OK, Cadenas.ErrorAttributeFormat);
             }
             catch (Exception exc)
             {
-                IsBusy = false;
+                ProgressBarONOFF(false);
                 IDialogService dialogService = new DialogService();
                 var dialogResult = dialogService.ShowAsync(MessageBoxButton.OK, exc.Message);
             }
@@ -145,7 +148,7 @@ namespace UniversalApp.ViewModels
 
         private async void LoadProducts()
         {
-            IsBusy = true;
+            ProgressBarONOFF();
 
             try
             {
@@ -154,17 +157,17 @@ namespace UniversalApp.ViewModels
                 CollectionProducts.AddRange(atribsList);
                 RaisePropertyChanged("CollectionProducts");
 
-                IsBusy = false;
+                ProgressBarONOFF(false);
             }
             catch (MobileServiceInvalidOperationException azureExc)
             {
-                IsBusy = false;
+                ProgressBarONOFF(false);
                 IDialogService dialogService = new DialogService();
                 var dialogResult = dialogService.ShowAsync(MessageBoxButton.OK, Cadenas.ErrorConnection);
             }
             catch (Exception exc)
             {
-                IsBusy = false;
+                ProgressBarONOFF(false);
                 IDialogService dialogService = new DialogService();
                 var dialogResult = dialogService.ShowAsync(MessageBoxButton.OK, exc.Message);
             }

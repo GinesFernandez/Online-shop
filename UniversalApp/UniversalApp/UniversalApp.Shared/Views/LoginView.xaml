@@ -5,19 +5,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UniversalApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:base="using:UniversalApp.Views.Base"
     xmlns:converters="using:UniversalApp.Converters"
     
     DataContext="{Binding LoginViewModel, Source={StaticResource Locator}}"
     
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:win81="condition:WINDOWS_APP"
     xmlns:wp81="condition:WINDOWS_PHONE_APP"
     mc:Ignorable="d win81 wp81"
     mc:ProcessContent="win81:* wp81:*">
 
     <Page.Resources>
-
+        <Thickness x:Key="FormMargin">5,5,5,5</Thickness>
     </Page.Resources>
 
     <Page.BottomAppBar>
@@ -39,6 +39,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <TextBlock x:Name="oTitle" x:Uid="oTitle" Grid.Row="0" Grid.Column="0" Text="Kaotiña's Store"
@@ -46,34 +48,30 @@
                        Foreground="{StaticResource TitleBrush}"
                        HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
-            <Grid x:Name="gridLogin" Grid.Row="1" Grid.Column="0"
-                  Visibility="{Binding IsRegistering, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+            <ScrollViewer Grid.Row="2" Grid.Column="1" Visibility="{Binding IsRegistering, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                              VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <StackPanel MinWidth="200" MaxWidth="500">
+                    <TextBlock x:Uid="oLogin" Text="Log in" Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Center"/>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                    <TextBlock x:Uid="oEmail" Text="email" />
+                    <TextBox InputScope="EmailSmtpAddress" Text="{Binding Email, Mode=TwoWay}"/>
 
-                <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                    <StackPanel>
-                        <TextBlock Text="Login" Style="{StaticResource HeaderTextBlockStyle}"/>
+                    <TextBlock x:Uid="oPassword" Text="password" />
+                    <PasswordBox x:Uid="oLoginPassword" Password="{Binding Password, Mode=TwoWay}"/>
 
-                        <HyperlinkButton Grid.Row="0" Grid.Column="0" x:Uid="bLogin"
-                                    ToolTipService.ToolTip="log in"
-                                    Command="{Binding LoginCommand}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                        <HyperlinkButton x:Uid="bLogin" Margin="0,0,20,0"
+                                         HorizontalAlignment="Center"
+                                         ToolTipService.ToolTip="log in"
+                                         Command="{Binding LoginCommand}">
                             <Path Data="{StaticResource IconLogin}"
                               Stretch="Uniform"
                               Fill="{StaticResource BorderBrush}">
                             </Path>
                         </HyperlinkButton>
-                        
-                        <HyperlinkButton x:Uid="bRegister"
+
+                        <HyperlinkButton x:Uid="bRegister" 
                                     ToolTipService.ToolTip="register as new user"
                                     Command="{Binding NavRegisterCommand}">
                             <Path Data="{StaticResource IconAddUser}"
@@ -81,30 +79,18 @@
                               Fill="{StaticResource BorderBrush}">
                             </Path>
                         </HyperlinkButton>
-                        
                     </StackPanel>
-                </ScrollViewer>
-            </Grid>
 
-            <Grid x:Name="gridRegister" Grid.Row="1" Grid.Column="0"
-                  Visibility="{Binding IsRegistering, Converter={StaticResource BoolToVisibilityConverter}}">
+                </StackPanel>
+            </ScrollViewer>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+            <ScrollViewer Grid.Row="2" Grid.Column="1" Visibility="{Binding IsRegistering, Converter={StaticResource BoolToVisibilityConverter}}"
+                          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <StackPanel MinWidth="200">
+                    <TextBlock x:Uid="oRegister" Text="Register as new user" Style="{StaticResource HeaderTextBlockStyle}"/>
 
-                <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                    <StackPanel>
-                        <TextBlock Text="Registering" Style="{StaticResource HeaderTextBlockStyle}"/>
-
-                        <HyperlinkButton x:Uid="bRegister"
+                    <StackPanel Orientation="Horizontal">
+                        <HyperlinkButton x:Uid="bRegister" Margin="{StaticResource FormMargin}"
                                     ToolTipService.ToolTip="register as new user"
                                     Command="{Binding RegisterCommand}">
                             <Path Data="{StaticResource IconAddUser}"
@@ -112,7 +98,7 @@
                               Fill="{StaticResource BorderBrush}">
                             </Path>
                         </HyperlinkButton>
-                        <HyperlinkButton x:Uid="bCancelRegister"
+                        <HyperlinkButton x:Uid="bCancelRegister" Margin="{StaticResource FormMargin}"
                                     ToolTipService.ToolTip="cancel registering"
                                     Command="{Binding CancelRegisterCommand}">
                             <Path Data="{StaticResource IconCancel}"
@@ -121,11 +107,10 @@
                             </Path>
                         </HyperlinkButton>
                     </StackPanel>
-                </ScrollViewer>
-                
-            </Grid>
+                </StackPanel>
+            </ScrollViewer>
 
         </Grid>
-
     </Grid>
+
 </base:PageBase>

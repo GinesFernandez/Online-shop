@@ -1,7 +1,9 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Threading.Tasks;
+using UniversalApp.Helpers;
 using UniversalApp.Model;
+using UniversalApp.Services;
 using UniversalApp.Services.Dialogs;
 using UniversalApp.Services.Navigation;
 using UniversalApp.Strings;
@@ -36,23 +38,15 @@ namespace UniversalApp.ViewModels
             }
         }
 
-        public bool IsRegisteringValid
+        private string _email;
+        public string Email
         {
-            get
-            {
-                return true; //TODO:
-            }
-        }
-
-        private string _name;
-        public string Name
-        {
-            get { return _name; }
+            get { return _email; }
             set
             {
-                if (value != _name)
+                if (value != _email)
                 {
-                    _name = value;
+                    _email = value;
                     RaisePropertyChanged();
                     LoginCommand.RaiseCanExecuteChanged();
                 }
@@ -111,11 +105,11 @@ namespace UniversalApp.ViewModels
         }
         public bool CanLoginCommandDelegate()
         {
-            return !String.IsNullOrWhiteSpace(Password) && !String.IsNullOrWhiteSpace(Name);
+            return !String.IsNullOrWhiteSpace(Password) && !String.IsNullOrWhiteSpace(Email) && !IsBusy;
         }
         public void LoginCommandDelegate()
         {
-            //NavigationService.NavigateToPage(ViewsEnum.MainPageView);
+            LoadUser();
         }
 
         private DelegateCommand _navRegisterCommand;
@@ -139,7 +133,7 @@ namespace UniversalApp.ViewModels
         }
         public bool CanRegisterCommandDelegate()
         {
-            return IsRegisteringValid;
+            return !IsBusy;
         }
         public void RegisterCommandDelegate()
         {
@@ -175,40 +169,89 @@ namespace UniversalApp.ViewModels
             if (args.Parameter != null && args.Parameter is Users)
             {
                 var user = (Users)args.Parameter;
-                Name = user.FirstName;
+                Email = user.Email;
                 Password = user.Password;
             }
 
             return null;
         }
 
-
+        public override void EnableDisableControls(bool enabled = true)
+        {
+            LoginCommand.RaiseCanExecuteChanged();
+            RegisterCommand.RaiseCanExecuteChanged();
+        }
 
         private async void LoadUser()
         {
-            IsBusy = true;
+            if (!IsLoginEmailValid())
+            {
+                IDialogService dialogService = new DialogService();
+                await dialogService.ShowAsync(MessageBoxButton.OK, Cadenas.ErrorEmailNotValid);
+                return;
+            }
+
+            ProgressBarONOFF();
 
             try
             {
-                //var atribsList = await App.MobileService.GetTable<Products>().Skip(ItemsPerPage * _currentPage).Take(ItemsPerPage).ToListAsync();
+                var users = await App.MobileService.GetTable<Users>().Where(x => x.Email == Email).ToListAsync();
 
+                if (users.Count > 0)
+                {
+                    Users user = users[0];
+                    SecurityService securityServ = new SecurityService();
 
+                    if (user.Password == securityServ.Encrypt(Password)) //should be done by backend
+                    {
+                        //TODO: save user information for next app run
+                        //StorageHelper.Save(user);
 
-                IsBusy = false;
+                        //TODO: update user login counter
+
+                        Globals.CurrentUser = user;
+                        NavigationService.NavigateToPage(ViewsEnum.MainPage);
+                    }
+                    else
+                    {
+                        IDialogService dialogService = new DialogService();
+                        var dialogResult = dialogService.ShowAsync(MessageBoxButton.OK, Cadenas.ErrorIncorrectPassword);
+                    }
+                }
+                else
+                {
+                    IDialogService dialogService = new DialogService();
+                    var dialogResult = dialogService.ShowAsync(MessageBoxButton.OK, String.Format(Cadenas.ErrorUserNotExists, Email));
+                }
+
+                ProgressBarONOFF(false);
+                LoginCommand.RaiseCanExecuteChanged();
+                RegisterCommand.RaiseCanExecuteChanged();
             }
             catch (MobileServiceInvalidOperationException azureExc)
             {
-                IsBusy = false;
+                ProgressBarONOFF(false);
                 IDialogService dialogService = new DialogService();
                 var dialogResult = dialogService.ShowAsync(MessageBoxButton.OK, Cadenas.ErrorConnection);
             }
             catch (Exception exc)
             {
-                IsBusy = false;
+                ProgressBarONOFF(false);
                 IDialogService dialogService = new DialogService();
                 var dialogResult = dialogService.ShowAsync(MessageBoxButton.OK, exc.Message);
             }
         }
+
+        private bool IsLoginEmailValid()
+        {
+            return ValidationHelper.IsValidEmail(Email);
+        }
+
+        //private bool IsRegisterEmailValid()
+        //{
+        //    return ValidationHelper.IsValidEmail(EmailRegister);
+        //}
+
 
         /////////////////////////////////////////////////////////////////
         #endregion

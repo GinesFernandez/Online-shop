@@ -1,7 +1,12 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:UniversalApp.Assets">
+    xmlns:local="using:UniversalApp.Assets"
+    
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:win81="condition:WINDOWS_APP"
+    xmlns:wp81="condition:WINDOWS_PHONE_APP"
+    mc:Ignorable="win81 wp81">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Brushes.xaml"/>
@@ -127,13 +132,13 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
 
-                        <Grid Width="48" Height="48" VerticalAlignment="Center">
+                        <Grid Width="40" Height="40" VerticalAlignment="Center">
                             <Path x:Name="border"
                                   Data="M50.5,4.7500001C25.232973,4.75 4.75,25.232973 4.7500001,50.5 4.75,75.767029 25.232973,96.25 50.5,96.25 75.767029,96.25 96.25,75.767029 96.25,50.5 96.25,25.232973 75.767029,4.75 50.5,4.7500001z M50.5,0C78.390381,0 101,22.609621 101,50.5 101,78.390381 78.390381,101 50.5,101 22.609621,101 0,78.390381 0,50.5 0,22.609621 22.609621,0 50.5,0z"
                                   Stretch="Fill" Fill="{StaticResource BorderBrush}" Visibility="Visible" />
                             <ContentPresenter x:Name="ContentPresenter"
                                               HorizontalAlignment="Center" VerticalAlignment="Center"
-                                              Width="30" Height="30" Content="{TemplateBinding Content}" RenderTransformOrigin="0.5,0.5">
+                                              Width="25" Height="25" Content="{TemplateBinding Content}" RenderTransformOrigin="0.5,0.5">
                                 <ContentPresenter.RenderTransform>
                                     <CompositeTransform ScaleY="1" ScaleX="1"/>
                                 </ContentPresenter.RenderTransform>
@@ -156,19 +161,21 @@
         <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
         <Setter Property="FontFamily" Value="{StaticResource ContentFontFamily}"/>
         <Setter Property="FontSize" Value="{StaticResource LabelFontSize}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 
     <Style TargetType="TextBlock" x:Key="TitleTextBlockStyle">
         <Setter Property="Foreground" Value="{StaticResource TitleBrush}"/>
         <Setter Property="FontFamily" Value="{StaticResource HeaderFontFamily}"/>
-        <Setter Property="FontSize" Value="{StaticResource ApplicationNameFontSize}"/>
+        <Setter Property="FontSize" Value="{StaticResource TitleFontSize}" wp81:Value="{StaticResource TitleWP81FontSize}" win81:Value="{StaticResource TitleWin81FontSize}"/>
     </Style>
 
     <Style TargetType="TextBlock" x:Key="HeaderTextBlockStyle">
         <Setter Property="Foreground" Value="{StaticResource TitleBrush}"/>
         <Setter Property="FontFamily" Value="{StaticResource HeaderFontFamily}"/>
         <Setter Property="FontSize" Value="{StaticResource HeaderFontSize}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
     <Style TargetType="TextBox" x:Key="DefaultTextBoxStyle">
@@ -176,12 +183,22 @@
         <Setter Property="FontSize" Value="{StaticResource ContentFontSize}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="MinHeight" Value="26"/>
-        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Padding" Value="2"/>
         <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
-        <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
     </Style>
 
+    <Style TargetType="PasswordBox" x:Key="DefaultPasswordBoxStyle">
+        <Setter Property="FontSize" Value="{StaticResource ContentFontSize}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="MinHeight" Value="26"/>
+        <Setter Property="Padding" Value="2"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+    </Style>
+    
     <Style TargetType="ProgressBar" x:Key="DefaultProgressBarStyle">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Height" Value="40"/>
@@ -196,5 +213,6 @@
     <Style TargetType="HyperlinkButton" BasedOn="{StaticResource DefaultHyperlinkButtonStyle}" />
     <Style TargetType="TextBox" BasedOn="{StaticResource DefaultTextBoxStyle}" />
     <Style TargetType="TextBlock" BasedOn="{StaticResource DefaultTextBlockStyle}" />
+    <Style TargetType="PasswordBox" BasedOn="{StaticResource DefaultPasswordBoxStyle}" />
     <Style TargetType="ProgressBar" BasedOn="{StaticResource DefaultProgressBarStyle}" />
 </ResourceDictionary>

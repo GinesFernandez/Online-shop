@@ -35,5 +35,12 @@ namespace UniversalApp.ViewModels.Base
         {
             _appFrame = viewFrame;
         }
+
+        public void ProgressBarONOFF(bool isON = true)
+        {
+            IsBusy = isON;
+            EnableDisableControls(isON);
+        }
+        public abstract void EnableDisableControls(bool enabled = true);
     }
 }

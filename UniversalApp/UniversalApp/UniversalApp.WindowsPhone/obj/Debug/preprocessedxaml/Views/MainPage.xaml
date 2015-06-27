@@ -30,21 +30,21 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Grid Margin="10">
-                <TextBlock x:Name="oTitle" x:Uid="oTitle" Grid.Row="0" Grid.Column="0" Text="Kaotiña's Store" Style="{StaticResource TitleTextBlockStyle}" Foreground="{StaticResource TitleBrush}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Grid Grid.Row="0">
+                <TextBlock x:Name="oTitle" x:Uid="oTitle" Grid.Row="0" Grid.Column="0" Text="Kaotiña's Store" Style="{StaticResource TitleTextBlockStyle}" Foreground="{StaticResource TitleBrush}" HorizontalAlignment="Left" />
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
 
-                    <TextBlock x:Uid="oLoged" Text="{Binding CurrentUserText}" Style="{StaticResource HeaderTextBlockStyle}" VerticalAlignment="Center" Margin="0,0,4,0" ToolTipService.ToolTip="logged as" />
+                    <TextBlock x:Uid="oLoged" Text="{Binding CurrentUserText}" Style="{StaticResource HeaderTextBlockStyle}" Margin="0,0,4,0" ToolTipService.ToolTip="logged as" />
 
-                    <HyperlinkButton Grid.Row="0" Grid.Column="0" x:Uid="bLogin" ToolTipService.ToolTip="log in" Command="{Binding LoginCommand}">
+                    <HyperlinkButton Grid.Row="0" Grid.Column="0" x:Uid="bLogin" Margin="0,4,0,4" ToolTipService.ToolTip="log in" Command="{Binding LoginCommand}">
                         <Path Data="{StaticResource IconLogin}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
                         </Path>
                     </HyperlinkButton>
                 </StackPanel>
-
+                
+                <!--<Border BorderThickness="0,0,0,2" HorizontalAlignment="Stretch" BorderBrush="{StaticResource BorderBrush}" />-->
             </Grid>
-
 
         </Grid>
 
