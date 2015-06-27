@@ -165,4 +165,34 @@
   <data name="oRegister.Text" xml:space="preserve">
     <value>Registrarse como nuevo usuario</value>
   </data>
+  <data name="DefaultTitle" xml:space="preserve">
+    <value>Mr.</value>
+  </data>
+  <data name="oAddress.Text" xml:space="preserve">
+    <value>address *</value>
+  </data>
+  <data name="oConfirmPassword.Text" xml:space="preserve">
+    <value>confirm password *</value>
+  </data>
+  <data name="oCountry.Text" xml:space="preserve">
+    <value>country</value>
+  </data>
+  <data name="oEmail.Text" xml:space="preserve">
+    <value>email *</value>
+  </data>
+  <data name="oFirstName.Text" xml:space="preserve">
+    <value>first name *</value>
+  </data>
+  <data name="oLastName.Text" xml:space="preserve">
+    <value>last name *</value>
+  </data>
+  <data name="oPassword.Text" xml:space="preserve">
+    <value>password *</value>
+  </data>
+  <data name="oUserTitle.Text" xml:space="preserve">
+    <value>tittle *</value>
+  </data>
+  <data name="oZipCode.Text" xml:space="preserve">
+    <value>zip code *</value>
+  </data>
 </root>

@@ -30,23 +30,24 @@
             <TextBlock x:Name="oTitle" x:Uid="oTitle" Grid.Row="0" Grid.Column="0" Text="Kaotiña's Store" Style="{StaticResource TitleTextBlockStyle}" Foreground="{StaticResource TitleBrush}" HorizontalAlignment="Left" VerticalAlignment="Center" />
 
             <ScrollViewer Grid.Row="2" Grid.Column="1" Visibility="{Binding IsRegistering, Converter={StaticResource InverseBoolToVisibilityConverter}}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                
                 <StackPanel MinWidth="200" MaxWidth="500">
                     <TextBlock x:Uid="oLogin" Text="Log in" Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Center" />
 
-                    <TextBlock x:Uid="oEmail" Text="email" />
-                    <TextBox InputScope="EmailSmtpAddress" Text="{Binding Email, Mode=TwoWay}" />
+                    <TextBlock x:Uid="oEmail" Text="email *" Margin="{StaticResource FormMargin}" />
+                    <TextBox InputScope="EmailSmtpAddress" Text="{Binding Email, Mode=TwoWay}" MaxLength="100" />
 
-                    <TextBlock x:Uid="oPassword" Text="password" />
-                    <PasswordBox x:Uid="oLoginPassword" Password="{Binding Password, Mode=TwoWay}" />
+                    <TextBlock x:Uid="oPassword" Text="password *" Margin="{StaticResource FormMargin}" />
+                    <PasswordBox Password="{Binding Password, Mode=TwoWay}" MaxLength="50" />
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="{StaticResource FormMargin}">
 
-                        <HyperlinkButton x:Uid="bLogin" Margin="0,0,20,0" HorizontalAlignment="Center" ToolTipService.ToolTip="log in" Command="{Binding LoginCommand}">
+                        <HyperlinkButton x:Uid="bLogin" Margin="{StaticResource FormMargin}" HorizontalAlignment="Center" ToolTipService.ToolTip="log in" Command="{Binding LoginCommand}">
                             <Path Data="{StaticResource IconLogin}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
                             </Path>
                         </HyperlinkButton>
 
-                        <HyperlinkButton x:Uid="bRegister" ToolTipService.ToolTip="register as new user" Command="{Binding NavRegisterCommand}">
+                        <HyperlinkButton x:Uid="bRegister" Margin="{StaticResource FormMargin}" ToolTipService.ToolTip="register as new user" Command="{Binding NavRegisterCommand}">
                             <Path Data="{StaticResource IconAddUser}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
                             </Path>
                         </HyperlinkButton>
@@ -56,10 +57,41 @@
             </ScrollViewer>
 
             <ScrollViewer Grid.Row="2" Grid.Column="1" Visibility="{Binding IsRegistering, Converter={StaticResource BoolToVisibilityConverter}}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                <StackPanel MinWidth="200">
-                    <TextBlock x:Uid="oRegister" Text="Register as new user" Style="{StaticResource HeaderTextBlockStyle}" />
+                
+                <StackPanel MinWidth="200" MaxWidth="500">
+                    <TextBlock x:Uid="oRegister" Text="Register as new user" Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Center" />
 
-                    <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Uid="oEmail" Text="email *" Margin="{StaticResource FormMargin}" />
+                    <TextBox InputScope="EmailSmtpAddress" Text="{Binding NewUser.Email, Mode=TwoWay}" MaxLength="100" />
+
+                    <TextBlock x:Uid="oPassword" Text="password *" Margin="{StaticResource FormMargin}" />
+                    <PasswordBox Password="{Binding NewUser.Password, Mode=TwoWay}" MaxLength="50" />
+
+                    <TextBlock x:Uid="oConfirmPassword" Text="confirm password *" Margin="{StaticResource FormMargin}" />
+                    <PasswordBox Password="{Binding Password2, Mode=TwoWay}" MaxLength="50" />
+
+                    <TextBlock x:Uid="oUserTitle" Text="title *" Margin="{StaticResource FormMargin}" />
+                    <TextBox Text="{Binding NewUser.Title, Mode=TwoWay}" MaxLength="50" />
+
+                    <TextBlock x:Uid="oFirstName" Text="first name *" Margin="{StaticResource FormMargin}" />
+                    <TextBox Text="{Binding NewUser.FirstName, Mode=TwoWay}" MaxLength="100" />
+
+                    <TextBlock x:Uid="oLastName" Text="last name *" Margin="{StaticResource FormMargin}" />
+                    <TextBox Text="{Binding NewUser.LastName, Mode=TwoWay}" MaxLength="200" />
+
+                    <TextBlock x:Uid="oAddress" Text="address *" Margin="{StaticResource FormMargin}" />
+                    <TextBox Text="{Binding NewUser.Address, Mode=TwoWay}" MaxLength="300" />
+
+                    <TextBlock x:Uid="oZipCode" Text="zip code *" Margin="{StaticResource FormMargin}" />
+                    <TextBox Text="{Binding NewUser.ZipCode, Mode=TwoWay}" InputScope="Number" MaxLength="5" />
+
+                    <TextBlock x:Uid="oCity" Text="city *" Margin="{StaticResource FormMargin}" />
+                    <TextBox Text="{Binding NewUser.City, Mode=TwoWay}" MaxLength="100" />
+
+                    <TextBlock x:Uid="oCountry" Text="country" Margin="{StaticResource FormMargin}" />
+                    <TextBox Text="{Binding NewUser.Country, Mode=TwoWay}" MaxLength="100" />
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="{StaticResource FormMargin}">
                         <HyperlinkButton x:Uid="bRegister" Margin="{StaticResource FormMargin}" ToolTipService.ToolTip="register as new user" Command="{Binding RegisterCommand}">
                             <Path Data="{StaticResource IconAddUser}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
                             </Path>

@@ -21,6 +21,7 @@ namespace UniversalApp.Strings
         public static readonly string ErrorIncorrectPassword = ResourceManager.Current.MainResourceMap.GetValue("Resources/ErrorIncorrectPassword", ResourceContext.GetForCurrentView()).ValueAsString;
         
         public static readonly string NotLogged = ResourceManager.Current.MainResourceMap.GetValue("Resources/NotLogged", ResourceContext.GetForCurrentView()).ValueAsString;
+        public static readonly string DefaultTitle = ResourceManager.Current.MainResourceMap.GetValue("Resources/DefaultTitle", ResourceContext.GetForCurrentView()).ValueAsString;
         
     }
 }

@@ -68,6 +68,21 @@ namespace UniversalApp.ViewModels
             }
         }
 
+        private Users _newUser = new Users() { Id = Guid.NewGuid(), Title = Cadenas.DefaultTitle };
+        public Users NewUser
+        {
+            get { return _newUser; }
+            set
+            {
+                if (value != _newUser)
+                {
+                    _newUser = value;
+                    RaisePropertyChanged();
+                    RegisterCommand.RaiseCanExecuteChanged();
+                }
+            }
+        }
+
         /////////////////////////////////////////////////////////////////
         #endregion
 
