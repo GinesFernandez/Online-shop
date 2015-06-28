@@ -93,8 +93,7 @@ namespace UniversalApp.ViewModels
 
         public override Task OnNavigatedTo(NavigationEventArgs args)
         {
-            //LoginCommand.RaiseCanExecuteChanged();
-            //RaisePropertyChanged("CurrentUserText");
+            RaisePropertyChanged("CurrentUserText");
 
             if (!Globals.ResourcesLoaded)
                 LoadResources();

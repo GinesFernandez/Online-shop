@@ -19,6 +19,8 @@ namespace UniversalApp.Strings
         public static readonly string ErrorEmailNotValid = ResourceManager.Current.MainResourceMap.GetValue("Resources/ErrorEmailNotValid", ResourceContext.GetForCurrentView()).ValueAsString;
         public static readonly string ErrorUserNotExists = ResourceManager.Current.MainResourceMap.GetValue("Resources/ErrorUserNotExists", ResourceContext.GetForCurrentView()).ValueAsString;
         public static readonly string ErrorIncorrectPassword = ResourceManager.Current.MainResourceMap.GetValue("Resources/ErrorIncorrectPassword", ResourceContext.GetForCurrentView()).ValueAsString;
+        public static readonly string ErrorPasswordConfirmNotValid = ResourceManager.Current.MainResourceMap.GetValue("Resources/ErrorPasswordConfirmNotValid", ResourceContext.GetForCurrentView()).ValueAsString;
+        public static readonly string ErrorUserAlreadyExists = ResourceManager.Current.MainResourceMap.GetValue("Resources/ErrorUserAlreadyExists", ResourceContext.GetForCurrentView()).ValueAsString;
         
         public static readonly string NotLogged = ResourceManager.Current.MainResourceMap.GetValue("Resources/NotLogged", ResourceContext.GetForCurrentView()).ValueAsString;
         public static readonly string DefaultTitle = ResourceManager.Current.MainResourceMap.GetValue("Resources/DefaultTitle", ResourceContext.GetForCurrentView()).ValueAsString;

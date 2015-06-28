@@ -1,5 +1,6 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
 using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using UniversalApp.Helpers;
 using UniversalApp.Model;
@@ -68,7 +69,22 @@ namespace UniversalApp.ViewModels
             }
         }
 
-        private Users _newUser = new Users() { Id = Guid.NewGuid(), Title = Cadenas.DefaultTitle };
+        private string _password2;
+        public string Password2
+        {
+            get { return _password2; }
+            set
+            {
+                if (value != _password2)
+                {
+                    _password2 = value;
+                    RaisePropertyChanged();
+                    RegisterCommand.RaiseCanExecuteChanged();
+                }
+            }
+        }
+
+        private Users _newUser = new Users() { Title = Cadenas.DefaultTitle };
         public Users NewUser
         {
             get { return _newUser; }
@@ -91,6 +107,8 @@ namespace UniversalApp.ViewModels
         public LoginViewModel(IDialogService dialogService)
         {
             _dialogService = dialogService;
+
+            _newUser.PropertyChanged += NewUser_PropertyChanged;
         }
         /////////////////////////////////////////////////////////////////
         #endregion
@@ -109,8 +127,7 @@ namespace UniversalApp.ViewModels
         }
         public void BackCommandDelegate()
         {
-            if (!IsBusy)
-                NavigationService.NavigateToPage(ViewsEnum.MainPage);
+            NavigationService.NavigateToPage(ViewsEnum.MainPage);
         }
 
         private DelegateCommand _loginCommand;
@@ -120,7 +137,7 @@ namespace UniversalApp.ViewModels
         }
         public bool CanLoginCommandDelegate()
         {
-            return !String.IsNullOrWhiteSpace(Password) && !String.IsNullOrWhiteSpace(Email) && !IsBusy;
+            return !IsBusy && !String.IsNullOrWhiteSpace(Password) && !String.IsNullOrWhiteSpace(Email);
         }
         public void LoginCommandDelegate()
         {
@@ -134,7 +151,7 @@ namespace UniversalApp.ViewModels
         }
         public bool CanNavRegisterCommandDelegate()
         {
-            return true;
+            return !IsBusy;
         }
         public void NavRegisterCommandDelegate()
         {
@@ -148,11 +165,11 @@ namespace UniversalApp.ViewModels
         }
         public bool CanRegisterCommandDelegate()
         {
-            return !IsBusy;
+            return !IsBusy && _newUser.AllMandatoryFieldsFilled;
         }
         public void RegisterCommandDelegate()
         {
-            //NavigationService.NavigateToPage(ViewsEnum.MainPageView);
+            CreateUser();
         }
 
 
@@ -163,7 +180,7 @@ namespace UniversalApp.ViewModels
         }
         public bool CanCancelRegisterCommandDelegate()
         {
-            return true;
+            return !IsBusy;
         }
         public void CancelRegisterCommandDelegate()
         {
@@ -174,6 +191,12 @@ namespace UniversalApp.ViewModels
 
         #region Methods
         /////////////////////////////////////////////////////////////////
+        
+        private void NewUser_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            RegisterCommand.RaiseCanExecuteChanged();
+        }
+
         public override Task OnNavigatedFrom(NavigationEventArgs args)
         {
             return null;
@@ -195,6 +218,8 @@ namespace UniversalApp.ViewModels
         {
             LoginCommand.RaiseCanExecuteChanged();
             RegisterCommand.RaiseCanExecuteChanged();
+            BackCommand.RaiseCanExecuteChanged();
+            CancelRegisterCommand.RaiseCanExecuteChanged();
         }
 
         private async void LoadUser()
@@ -221,7 +246,6 @@ namespace UniversalApp.ViewModels
                     {
                         //TODO: save user information for next app run
                         //StorageHelper.Save(user);
-
                         //TODO: update user login counter
 
                         Globals.CurrentUser = user;
@@ -240,8 +264,63 @@ namespace UniversalApp.ViewModels
                 }
 
                 ProgressBarONOFF(false);
-                LoginCommand.RaiseCanExecuteChanged();
-                RegisterCommand.RaiseCanExecuteChanged();
+            }
+            catch (MobileServiceInvalidOperationException azureExc)
+            {
+                ProgressBarONOFF(false);
+                IDialogService dialogService = new DialogService();
+                var dialogResult = dialogService.ShowAsync(MessageBoxButton.OK, Cadenas.ErrorConnection);
+            }
+            catch (Exception exc)
+            {
+                ProgressBarONOFF(false);
+                IDialogService dialogService = new DialogService();
+                var dialogResult = dialogService.ShowAsync(MessageBoxButton.OK, exc.Message);
+            }
+        }
+
+        private async void CreateUser()
+        {
+            if (!IsRegisterEmailValid())
+            {
+                IDialogService dialogService = new DialogService();
+                await dialogService.ShowAsync(MessageBoxButton.OK, Cadenas.ErrorEmailNotValid);
+                return;
+            }
+            if (!IsPasswordConfirmValid())
+            {
+                IDialogService dialogService = new DialogService();
+                await dialogService.ShowAsync(MessageBoxButton.OK, Cadenas.ErrorPasswordConfirmNotValid);
+                return;
+            }
+            //TODO: check valid zipcode
+
+            ProgressBarONOFF();
+
+            try
+            {
+                var users = await App.MobileService.GetTable<Users>().Where(x => x.Email == Email).ToListAsync();
+
+                if (users.Count == 0)
+                {
+                    SecurityService securityServ = new SecurityService();
+                    _newUser.Password = securityServ.Encrypt(_newUser.Password); //should be done by backend
+
+                    await App.MobileService.GetTable<Users>().InsertAsync(_newUser);
+
+                    //TODO: save user information for next app run
+                    //StorageHelper.Save(user);
+                    Globals.CurrentUser = _newUser;
+                    NavigationService.NavigateToPage(ViewsEnum.MainPage);
+
+                }
+                else
+                {
+                    IDialogService dialogService = new DialogService();
+                    var dialogResult = dialogService.ShowAsync(MessageBoxButton.OK, String.Format(Cadenas.ErrorUserAlreadyExists, Email));
+                }
+
+                ProgressBarONOFF(false);
             }
             catch (MobileServiceInvalidOperationException azureExc)
             {
@@ -259,15 +338,18 @@ namespace UniversalApp.ViewModels
 
         private bool IsLoginEmailValid()
         {
-            return ValidationHelper.IsValidEmail(Email);
+            return ValidationHelper.IsValidEmail(_email);
         }
 
-        //private bool IsRegisterEmailValid()
-        //{
-        //    return ValidationHelper.IsValidEmail(EmailRegister);
-        //}
+        private bool IsRegisterEmailValid()
+        {
+            return ValidationHelper.IsValidEmail(NewUser.Email);
+        }
 
-
+        private bool IsPasswordConfirmValid()
+        {
+            return _newUser.Password.Equals(_password2);
+        }
         /////////////////////////////////////////////////////////////////
         #endregion
     }

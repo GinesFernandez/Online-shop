@@ -195,4 +195,10 @@
   <data name="oZipCode.Text" xml:space="preserve">
     <value>código postal *</value>
   </data>
+  <data name="ErrorPasswordConfirmNotValid" xml:space="preserve">
+    <value>La confirmación de la contraseña no coincide</value>
+  </data>
+  <data name="ErrorUserAlreadyExists" xml:space="preserve">
+    <value>El usuario con email {0} ya existe</value>
+  </data>
 </root>
