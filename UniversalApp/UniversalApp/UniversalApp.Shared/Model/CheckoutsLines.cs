@@ -18,5 +18,8 @@ namespace UniversalApp.Model
 
         [JsonProperty(PropertyName = "ProductId")]
         public Guid ProductId { get; set; }
+
+
+        public Products Product { get; set; }
     }
 }

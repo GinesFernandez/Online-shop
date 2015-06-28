@@ -23,6 +23,7 @@
     <SolidColorBrush x:Key="TitleBrush" Color="{StaticResource ThemeColor2}" />
     <SolidColorBrush x:Key="TextBrush" Color="{StaticResource ThemeColor1}" />
     <SolidColorBrush x:Key="TextBrush2" Color="{StaticResource ThemeColor3}" />
+    <SolidColorBrush x:Key="TextBrush3" Color="{StaticResource ThemeColor5}" />
 
     <SolidColorBrush x:Key="TextBoxMouseOverBorderBrush" Color="{StaticResource HighlightDarkColor}" />
     <SolidColorBrush x:Key="TextBoxMouseOverInnerBorderBrush" Color="{StaticResource HighlightLightColor}" />

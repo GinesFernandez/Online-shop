@@ -10,6 +10,7 @@ using Microsoft.WindowsAzure.MobileServices;
 using UniversalApp.Model;
 using UniversalApp.Helpers;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace UniversalApp.ViewModels
 {
@@ -34,8 +35,13 @@ namespace UniversalApp.ViewModels
             get { return Globals.CurrentUser != null; }
         }
 
-        private List<Products> _collectionProducts = new List<Products>();
-        public List<Products> CollectionProducts
+        public string CurrentUserText
+        {
+            get { return Globals.CurrentUser != null ? Globals.CurrentUser.FirstName : Cadenas.NotLogged; }
+        }
+
+        private ObservableCollection<Products> _collectionProducts = new ObservableCollection<Products>();
+        public ObservableCollection<Products> CollectionProducts
         {
             get { return _collectionProducts; }
             set
@@ -48,9 +54,48 @@ namespace UniversalApp.ViewModels
             }
         }
 
-        public string CurrentUserText
+        private ObservableCollection<CheckoutsLines> _currentCart = new ObservableCollection<CheckoutsLines>();
+        public ObservableCollection<CheckoutsLines> CurrentCart
         {
-            get { return Globals.CurrentUser != null ? Globals.CurrentUser.FirstName : Cadenas.NotLogged; }
+            get { return _currentCart; }
+            set
+            {
+                if (value != _currentCart)
+                {
+                    _currentCart = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        private Products _selectedProduct;
+        public Products SelectedProduct
+        {
+            get { return _selectedProduct; }
+            set
+            {
+                if (value != _selectedProduct)
+                {
+                    _selectedProduct = value;
+                    RaisePropertyChanged();
+
+                    IsDetailVisible = true;
+                }
+            }
+        }
+
+        private bool _isDetailVisible;
+        public bool IsDetailVisible
+        {
+            get { return _isDetailVisible; }
+            set
+            {
+                if (value != _isDetailVisible)
+                {
+                    _isDetailVisible = value;
+                    RaisePropertyChanged();
+                }
+            }
         }
 
         /////////////////////////////////////////////////////////////////
@@ -81,6 +126,26 @@ namespace UniversalApp.ViewModels
             NavigationService.NavigateToPage(ViewsEnum.LoginView, Globals.CurrentUser);
         }
 
+        private DelegateCommand _closeDetailCommand;
+        public DelegateCommand CloseDetailCommand
+        {
+            get { return _closeDetailCommand = _closeDetailCommand ?? new DelegateCommand(CloseDetailCommandDelegate); }
+        }
+        public void CloseDetailCommandDelegate()
+        {
+            IsDetailVisible = false;
+        }
+
+        private DelegateCommand _addToCartCommand;
+        public DelegateCommand AddToCartCommand
+        {
+            get { return _addToCartCommand = _addToCartCommand ?? new DelegateCommand(AddToCartCommandDelegate); }
+        }
+        public void AddToCartCommandDelegate()
+        {
+            CurrentCart.Add(new CheckoutsLines() { ProductId = SelectedProduct.Id, Product = SelectedProduct });
+            IsDetailVisible = false;
+        }
         /////////////////////////////////////////////////////////////////
         #endregion
 
@@ -98,7 +163,7 @@ namespace UniversalApp.ViewModels
             if (!Globals.ResourcesLoaded)
                 LoadResources();
 
-            LoadProducts();
+            LoadProducts(_currentPage);
             return null;
         }
 
@@ -118,9 +183,12 @@ namespace UniversalApp.ViewModels
                 var atribsList = await App.MobileService.GetTable<ApplicationAttributes>().Where(a => a.Value != null).ToListAsync();
 
                 var atribTax = atribsList.FirstOrDefault(a => a.Id == ConstApplicationAttributes.TaxPercentage);
+                var atribCurrency = atribsList.FirstOrDefault(a => a.Id == ConstApplicationAttributes.Currency);
 
                 if (atribTax != null)
                     Globals.TaxPercentage = float.Parse(atribTax.Value);
+                if (atribCurrency != null)
+                    Globals.Currency = atribCurrency.Value;
 
                 Globals.ResourcesLoaded = true;
                 ProgressBarONOFF(false);
@@ -145,16 +213,16 @@ namespace UniversalApp.ViewModels
             }
         }
 
-        private async void LoadProducts()
+        private async void LoadProducts(int page = 0)
         {
             ProgressBarONOFF();
 
             try
             {
-                var atribsList = await App.MobileService.GetTable<Products>().Skip(ItemsPerPage* _currentPage).Take(ItemsPerPage).ToListAsync();
+                var atribsList = await App.MobileService.GetTable<Products>().Skip(ItemsPerPage * page).Take(ItemsPerPage).ToCollectionAsync();
 
-                CollectionProducts.AddRange(atribsList);
-                RaisePropertyChanged("CollectionProducts");
+                foreach (Products p in atribsList)
+                    _collectionProducts.Add(p);
 
                 ProgressBarONOFF(false);
             }

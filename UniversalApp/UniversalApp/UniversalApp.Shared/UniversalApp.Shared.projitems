@@ -17,6 +17,8 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\ItemClickCommandBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringPathToGeometryConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TextCurrencyConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Globals.cs" />

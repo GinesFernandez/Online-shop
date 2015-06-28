@@ -43,6 +43,7 @@
     <build:Item Name="ProjectGUID" Value="{498427E1-7FF2-45EA-98BC-24B8E24CCDA9}" />
     <build:Item Name="Microsoft.Windows.UI.Xaml.Build.Tasks.dll" Version="12.0.30501.0" />
     <build:Item Name="BehaviorsXamlSDKManaged" Version="12.0" />
+    <build:Item Name="Telerik UI For Windows Universal" Version="2015.2.624.45" />
     <build:Item Name="MakePri.exe" Version="6.3.9600.17298 (winblue.141024-1500)" />
   </build:Metadata>
 </Package>

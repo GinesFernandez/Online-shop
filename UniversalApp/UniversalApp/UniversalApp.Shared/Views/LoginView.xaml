@@ -22,8 +22,43 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:Uid="bBack" Label="Back" Icon="Back" Command="{Binding BackCommand}">
+            <AppBarButton x:Uid="bBack" Label="Back" Icon="Back" Command="{Binding BackCommand}" />
+
+            <!--<AppBarButton x:Uid="appbarLogin" Label="log in"
+                          Visibility="{Binding IsRegistering, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                          Command="{Binding LoginCommand}"  ToolTipService.ToolTip="log in">
+                <AppBarButton.Icon>
+                    <PathIcon Data="{StaticResource IconLogin}"
+                              VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
+                </AppBarButton.Icon>
             </AppBarButton>
+
+            <AppBarButton x:Uid="appbarNavRegister" Label="new user"
+                          Visibility="{Binding IsRegistering, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+                          Command="{Binding NavRegisterCommand}"  ToolTipService.ToolTip="register as new user">
+                <AppBarButton.Icon>
+                    <PathIcon Data="{StaticResource IconAddUser}"
+                              VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+
+            <AppBarButton x:Uid="appbarRegister" Label="register"
+                          Visibility="{Binding IsRegistering, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Command="{Binding RegisterCommand}"  ToolTipService.ToolTip="register as new user">
+                <AppBarButton.Icon>
+                    <PathIcon Data="{StaticResource IconAddUser}"
+                              VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+
+            <AppBarButton x:Uid="appbarCancelRegister" Label="cancel"
+                          Visibility="{Binding IsRegistering, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Command="{Binding CancelRegisterCommand}"  ToolTipService.ToolTip="cancel registering">
+                <AppBarButton.Icon>
+                    <PathIcon Data="{StaticResource IconCancel}" 
+                              VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
+                </AppBarButton.Icon>
+            </AppBarButton>-->
 
         </CommandBar>
     </Page.BottomAppBar>
@@ -50,7 +85,7 @@
 
             <ScrollViewer Grid.Row="2" Grid.Column="1" Visibility="{Binding IsRegistering, Converter={StaticResource InverseBoolToVisibilityConverter}}"
                               VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                
+
                 <StackPanel MinWidth="200" MaxWidth="500">
                     <TextBlock x:Uid="oLogin" Text="Log in"
                                Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Center"/>
@@ -62,7 +97,6 @@
                     <PasswordBox Password="{Binding Password, Mode=TwoWay}" MaxLength="50"/>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="{StaticResource FormMargin}">
-
                         <HyperlinkButton x:Uid="bLogin" Margin="{StaticResource FormMargin}"
                                          HorizontalAlignment="Center"
                                          ToolTipService.ToolTip="log in"
@@ -72,8 +106,7 @@
                               Fill="{StaticResource BorderBrush}">
                             </Path>
                         </HyperlinkButton>
-
-                        <HyperlinkButton x:Uid="bRegister" Margin="{StaticResource FormMargin}"
+                        <HyperlinkButton x:Uid="bNavRegister" Margin="{StaticResource FormMargin}"
                                     ToolTipService.ToolTip="register as new user"
                                     Command="{Binding NavRegisterCommand}">
                             <Path Data="{StaticResource IconAddUser}"
@@ -88,7 +121,7 @@
 
             <ScrollViewer Grid.Row="2" Grid.Column="1" Visibility="{Binding IsRegistering, Converter={StaticResource BoolToVisibilityConverter}}"
                           VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                
+
                 <StackPanel MinWidth="200" MaxWidth="500">
                     <TextBlock x:Uid="oRegister" Text="Register as new user"
                                Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Center"/>

@@ -17,5 +17,12 @@ namespace UniversalApp
             get { return Globals._taxPercentage; }
             set { Globals._taxPercentage = value; }
         }
+
+        private static string _currency = "€";
+        public static string Currency
+        {
+            get { return Globals._currency; }
+            set { Globals._currency = value; }
+        }
     }
 }

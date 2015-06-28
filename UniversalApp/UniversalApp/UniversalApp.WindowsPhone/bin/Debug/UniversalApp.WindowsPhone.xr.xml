@@ -24,6 +24,10 @@
     <RootPropertyPathName Name="LoginCommand" />
     <RootPropertyPathName Name="IsBusy" />
     <RootPropertyPathName Name="MainPageViewModel" />
+    <RootPropertyPathName Name="Price" />
+    <RootPropertyPathName Name="Name" />
+    <RootPropertyPathName Name="SmallPicture" />
+    <RootPropertyPathName Name="CollectionProducts" />
     <RootPropertyPathName Name="CurrentUserText" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
@@ -38,6 +42,7 @@
     <RootType FullName="UniversalApp.Globals" />
     <RootType FullName="UniversalApp.Converters.BoolToVisibilityConverter" />
     <RootType FullName="UniversalApp.Converters.InverseBoolToVisibilityConverter" />
+    <RootType FullName="UniversalApp.Converters.TextCurrencyConverter" />
     <RootType FullName="Windows.UI.Color" />
     <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
       <RootProperty Name="Color" />
@@ -76,12 +81,16 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="TextTrimming" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="MaxHeight" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.FrameworkElement">
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="MinHeight" />
       <RootProperty Name="Height" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="InputScope" />
@@ -204,6 +213,8 @@
       <RootProperty Name="Stroke" />
       <RootProperty Name="Margin" />
       <RootProperty Name="StrokeThickness" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="UniversalApp.Views.Base.PageBase">
       <RootProperty Name="DataContext" />
@@ -244,6 +255,8 @@
       <RootProperty Name="Orientation" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Height" />
       <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
@@ -254,6 +267,39 @@
     <RootType FullName="Microsoft.Xaml.Interactivity.Interaction">
       <RootMethod Name="GetBehaviors" />
       <RootMethod Name="SetBehaviors" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.LinearGradientBrush">
+      <RootProperty Name="EndPoint" />
+      <RootProperty Name="StartPoint" />
+      <RootProperty Name="GradientStops" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.DataTemplate">
+      <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Telerik.UI.Xaml.Controls.Data.ListView.RadListViewItem" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Image">
+      <RootProperty Name="Source" />
+      <RootProperty Name="MaxHeight" />
+      <RootProperty Name="MaxWidth" />
+      <RootProperty Name="Stretch" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Margin" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.GradientStop">
+      <RootProperty Name="Color" />
+      <RootProperty Name="Offset" />
+    </RootType>
+    <RootType FullName="Telerik.UI.Xaml.Controls.Data.RadListView">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Orientation" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="LayoutDefinition" />
+    </RootType>
+    <RootType FullName="Telerik.UI.Xaml.Controls.Data.ListView.WrapLayoutDefinition">
+      <RootProperty Name="ItemWidth" />
     </RootType>
     <RootType FullName="UniversalApp.Views.MainPage" />
   </Roots.RootTypes>
