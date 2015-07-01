@@ -23,9 +23,9 @@
     mc:ProcessContent="win81:* wp81:*">
 
     <Page.Resources>
-        
+
         <Thickness x:Key="FormMargin">5,5,5,5</Thickness>
-        
+
         <LinearGradientBrush x:Key="GradientBrush" EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="Transparent" Offset="0"/>
             <GradientStop Color="{StaticResource ThemeColor3}" Offset="1"/>
@@ -68,7 +68,7 @@
         <ProgressBar x:Name="progressBar" IsIndeterminate="{Binding IsBusy}" />
 
         <!--Details-->
-        <Border Visibility="{Binding IsDetailVisible, Converter={StaticResource BoolToVisibilityConverter}}" Canvas.ZIndex="1"
+        <Border Visibility="{Binding IsDetailVisible, Converter={StaticResource BoolToVisibilityConverter}}" Canvas.ZIndex="10"
                 VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50"
                 BorderThickness="2" CornerRadius="3" Background="{StaticResource ControlBrush2}" BorderBrush="{StaticResource BorderBrush2}">
             <Grid>
@@ -79,8 +79,8 @@
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="{StaticResource FormMargin}">
                     <HyperlinkButton x:Uid="bCloseDetail" 
-                                    ToolTipService.ToolTip="log in"
-                                    Command="{Binding AddToCartCommand}">
+                                     ToolTipService.ToolTip="log in"
+                                     Command="{Binding AddToCartCommand}">
                         <Path Data="{StaticResource IconCartAdd}"
                               Stretch="Uniform"
                               Fill="{StaticResource BorderBrush}">
@@ -88,16 +88,35 @@
                     </HyperlinkButton>
                     <HyperlinkButton x:Uid="bCloseDetail"
                                      VerticalAlignment="Top" HorizontalAlignment="Right" Margin="{StaticResource FormMargin}"
-                                    ToolTipService.ToolTip="close"
-                                    Command="{Binding CloseDetailCommand}">
-                    <Path Data="{StaticResource IconCancel}"
+                                     ToolTipService.ToolTip="close"
+                                     Command="{Binding CloseDetailCommand}">
+                        <Path Data="{StaticResource IconCancel}"
+                              Stretch="Uniform"
+                              Fill="{StaticResource BorderBrush}">
+                        </Path>
+                    </HyperlinkButton>
+                </StackPanel>
+
+                <HyperlinkButton x:Uid="bNextDetail" Margin="{StaticResource FormMargin}"
+                                     HorizontalAlignment="Right" VerticalAlignment="Center"
+                                     ToolTipService.ToolTip="next"
+                                     Command="{Binding NextDetailCommand}">
+                    <Path Data="{StaticResource IconRightArrow}"
                               Stretch="Uniform"
                               Fill="{StaticResource BorderBrush}">
                     </Path>
                 </HyperlinkButton>
-                </StackPanel>
+                <HyperlinkButton x:Uid="bPreviousDetail" Margin="{StaticResource FormMargin}"
+                                     HorizontalAlignment="Left" VerticalAlignment="Center"
+                                    ToolTipService.ToolTip="prevoius"
+                                    Command="{Binding PreviousDetailCommand}">
+                    <Path Data="{StaticResource IconLeftArrow}"
+                              Stretch="Uniform"
+                              Fill="{StaticResource BorderBrush}">
+                    </Path>
+                </HyperlinkButton>
 
-                <StackPanel Canvas.ZIndex="2" 
+                <StackPanel Canvas.ZIndex="11" 
                         Background="{StaticResource BorderBrush2}" MinHeight="60" VerticalAlignment="Bottom">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock  Text="{Binding SelectedProduct.Name}" TextTrimming="WordEllipsis"

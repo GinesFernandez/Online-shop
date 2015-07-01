@@ -196,3 +196,4 @@ C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\Univers
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\Telerik.UI.Xaml.Primitives.xml
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\UniversalApp.Windows.csprojResolveAssemblyReference.cache
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Assets\Brushes.xbf
+C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\Assets\Images.xbf

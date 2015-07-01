@@ -78,6 +78,8 @@ namespace UniversalApp.ViewModels
                 {
                     _selectedProduct = value;
                     RaisePropertyChanged();
+                    PreviousDetailCommand.RaiseCanExecuteChanged();
+                    NextDetailCommand.RaiseCanExecuteChanged();
 
                     IsDetailVisible = true;
                 }
@@ -134,6 +136,41 @@ namespace UniversalApp.ViewModels
         public void CloseDetailCommandDelegate()
         {
             IsDetailVisible = false;
+        }
+
+        private DelegateCommand _nextDetailCommand;
+        public DelegateCommand NextDetailCommand
+        {
+            get { return _nextDetailCommand = _nextDetailCommand ?? new DelegateCommand(NextDetailCommandDelegate, CanNextDetailCommandDelegate); }
+        }
+        public bool CanNextDetailCommandDelegate()
+        {
+            return CollectionProducts.Count > CollectionProducts.IndexOf(SelectedProduct) + 1;
+        }
+        public void NextDetailCommandDelegate()
+        {
+            var nextIndex = CollectionProducts.IndexOf(SelectedProduct) + 1;
+            if (CollectionProducts.Count > nextIndex)
+            {
+                SelectedProduct = CollectionProducts[nextIndex];
+            }
+        }
+        private DelegateCommand _previousDetailCommand;
+        public DelegateCommand PreviousDetailCommand
+        {
+            get { return _previousDetailCommand = _previousDetailCommand ?? new DelegateCommand(PreviousDetailCommandDelegate, CanPreviousDetailCommandDelegate); }
+        }
+        public bool CanPreviousDetailCommandDelegate()
+        {
+            return CollectionProducts.IndexOf(SelectedProduct) - 1 >= 0;
+        }
+        public void PreviousDetailCommandDelegate()
+        {
+            var prevIndex = CollectionProducts.IndexOf(SelectedProduct) - 1;
+            if (prevIndex >= 0)
+            {
+                SelectedProduct = CollectionProducts[prevIndex];
+            }
         }
 
         private DelegateCommand _addToCartCommand;

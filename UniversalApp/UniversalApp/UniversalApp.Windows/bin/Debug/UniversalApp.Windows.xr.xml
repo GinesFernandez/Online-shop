@@ -32,6 +32,8 @@
     <RootPropertyPathName Name="CurrentUserText" />
     <RootPropertyPathName Name="IsDetailVisible" />
     <RootPropertyPathName Name="Description" />
+    <RootPropertyPathName Name="PreviousDetailCommand" />
+    <RootPropertyPathName Name="NextDetailCommand" />
     <RootPropertyPathName Name="CloseDetailCommand" />
     <RootPropertyPathName Name="AddToCartCommand" />
     <RootPropertyPathName Name="Picture" />

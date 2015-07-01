@@ -1,9 +1,9 @@
 ﻿<base:PageBase x:Name="page" x:Class="UniversalApp.Views.MainPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:UniversalApp" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:base="using:UniversalApp.Views.Base" xmlns:i="using:Microsoft.Xaml.Interactivity" xmlns:core="using:Microsoft.Xaml.Interactions.Core" xmlns:converters="using:UniversalApp.Converters" xmlns:telerik="using:Telerik.UI.Xaml.Controls.Data" xmlns:telerikData="using:Telerik.Data.Core" xmlns:listview="using:Telerik.UI.Xaml.Controls.Data.ListView" xmlns:listViewPrimitives="using:Telerik.UI.Xaml.Controls.Data.ListView.Primitives" DataContext="{Binding MainPageViewModel, Source={StaticResource Locator}}" mc:Ignorable="d">
 
     <Page.Resources>
-        
+
         <Thickness x:Key="FormMargin">5,5,5,5</Thickness>
-        
+
         <LinearGradientBrush x:Key="GradientBrush" EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="Transparent" Offset="0" />
             <GradientStop Color="{StaticResource ThemeColor3}" Offset="1" />
@@ -42,7 +42,7 @@
         <ProgressBar x:Name="progressBar" IsIndeterminate="{Binding IsBusy}" />
 
         <!--Details-->
-        <Border Visibility="{Binding IsDetailVisible, Converter={StaticResource BoolToVisibilityConverter}}" Canvas.ZIndex="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50" BorderThickness="2" CornerRadius="3" Background="{StaticResource ControlBrush2}" BorderBrush="{StaticResource BorderBrush2}">
+        <Border Visibility="{Binding IsDetailVisible, Converter={StaticResource BoolToVisibilityConverter}}" Canvas.ZIndex="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50" BorderThickness="2" CornerRadius="3" Background="{StaticResource ControlBrush2}" BorderBrush="{StaticResource BorderBrush2}">
             <Grid>
 
                 <Image Source="{Binding SelectedProduct.Picture}" MinHeight="215" MinWidth="290" Stretch="Uniform" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,50" />
@@ -53,12 +53,21 @@
                         </Path>
                     </HyperlinkButton>
                     <HyperlinkButton x:Uid="bCloseDetail" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="{StaticResource FormMargin}" ToolTipService.ToolTip="close" Command="{Binding CloseDetailCommand}">
-                    <Path Data="{StaticResource IconCancel}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
-                    </Path>
-                </HyperlinkButton>
+                        <Path Data="{StaticResource IconCancel}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
+                        </Path>
+                    </HyperlinkButton>
                 </StackPanel>
 
-                <StackPanel Canvas.ZIndex="2" Background="{StaticResource BorderBrush2}" MinHeight="60" VerticalAlignment="Bottom">
+                <HyperlinkButton x:Uid="bNextDetail" Margin="{StaticResource FormMargin}" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTipService.ToolTip="next" Command="{Binding NextDetailCommand}">
+                    <Path Data="{StaticResource IconRightArrow}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
+                    </Path>
+                </HyperlinkButton>
+                <HyperlinkButton x:Uid="bPreviousDetail" Margin="{StaticResource FormMargin}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTipService.ToolTip="prevoius" Command="{Binding PreviousDetailCommand}">
+                    <Path Data="{StaticResource IconLeftArrow}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
+                    </Path>
+                </HyperlinkButton>
+
+                <StackPanel Canvas.ZIndex="11" Background="{StaticResource BorderBrush2}" MinHeight="60" VerticalAlignment="Bottom">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding SelectedProduct.Name}" TextTrimming="WordEllipsis" TextWrapping="WrapWholeWords" Height="25" FontWeight="Bold" Margin="{StaticResource FormMargin}" Foreground="{StaticResource TextBrush4}" />
                         <TextBlock Text="{Binding SelectedProduct.Price, Converter={StaticResource TextCurrencyConverter}}" FontWeight="Bold" VerticalAlignment="Top" Margin="{StaticResource FormMargin}" Foreground="{StaticResource TextBrush4}" />
