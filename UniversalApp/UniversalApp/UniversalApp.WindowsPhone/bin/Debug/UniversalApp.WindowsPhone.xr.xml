@@ -28,7 +28,15 @@
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="SmallPicture" />
     <RootPropertyPathName Name="CollectionProducts" />
+    <RootPropertyPathName Name="SelectedProduct" />
     <RootPropertyPathName Name="CurrentUserText" />
+    <RootPropertyPathName Name="IsDetailVisible" />
+    <RootPropertyPathName Name="Description" />
+    <RootPropertyPathName Name="PreviousDetailCommand" />
+    <RootPropertyPathName Name="NextDetailCommand" />
+    <RootPropertyPathName Name="CloseDetailCommand" />
+    <RootPropertyPathName Name="AddToCartCommand" />
+    <RootPropertyPathName Name="Picture" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -70,6 +78,7 @@
       <RootProperty Name="Command" />
       <RootProperty Name="Content" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="Foreground" />
@@ -84,6 +93,7 @@
       <RootProperty Name="TextTrimming" />
       <RootProperty Name="Height" />
       <RootProperty Name="MaxHeight" />
+      <RootProperty Name="FontWeight" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.FrameworkElement">
       <RootProperty Name="VerticalAlignment" />
@@ -203,6 +213,11 @@
       <RootProperty Name="Background" />
       <RootProperty Name="CornerRadius" />
       <RootProperty Name="Opacity" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Child" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
       <RootProperty Name="Fill" />
@@ -258,6 +273,7 @@
       <RootProperty Name="Background" />
       <RootProperty Name="Height" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="MinHeight" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
       <RootMethod Name="GetToolTip" />
@@ -279,11 +295,14 @@
     <RootType FullName="Telerik.UI.Xaml.Controls.Data.ListView.RadListViewItem" />
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
       <RootProperty Name="Source" />
-      <RootProperty Name="MaxHeight" />
-      <RootProperty Name="MaxWidth" />
       <RootProperty Name="Stretch" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="MaxHeight" />
+      <RootProperty Name="MaxWidth" />
+      <RootProperty Name="MinHeight" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.GradientStop">
       <RootProperty Name="Color" />
@@ -296,6 +315,7 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="SelectedItem" />
       <RootProperty Name="LayoutDefinition" />
     </RootType>
     <RootType FullName="Telerik.UI.Xaml.Controls.Data.ListView.WrapLayoutDefinition">

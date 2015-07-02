@@ -33,7 +33,8 @@
 
         <DataTemplate x:Key="WrapItemTemplate">
             <Grid>
-                <Image Source="{Binding SmallPicture}" MaxHeight="215" MaxWidth="290" Stretch="Uniform" VerticalAlignment="Stretch" Margin="5"/>
+                <Image Source="{Binding SmallPicture}" wp81:MaxHeight="215" win81:MaxHeight="315" wp81:MaxWidth="290" win81:MaxWidth="390"
+                       Stretch="Uniform" VerticalAlignment="Stretch" Margin="5"/>
                 <StackPanel Background="{StaticResource GradientBrush}" Height="60" VerticalAlignment="Bottom">
                     <TextBlock Margin="20,5,20,3" Text="{Binding Name}" TextTrimming="WordEllipsis"
                                TextWrapping="WrapWholeWords" Height="25"
@@ -175,10 +176,10 @@
                                 ItemsSource="{Binding CollectionProducts}" ItemTemplate="{StaticResource WrapItemTemplate}"
                                  SelectedItem="{Binding SelectedProduct, Mode=TwoWay}">
                 <telerik:RadListView.LayoutDefinition>
-                    <listview:WrapLayoutDefinition  ItemWidth="300"/>
+                    <listview:WrapLayoutDefinition  wp81:ItemWidth="300" win81:ItemWidth="400"/>
                 </telerik:RadListView.LayoutDefinition>
             </telerik:RadListView>
-
+            
         </Grid>
 
     </Grid>

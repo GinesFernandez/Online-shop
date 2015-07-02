@@ -22,7 +22,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Globals.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Helper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\StorageHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ValidationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\ApplicationAttributes.cs" />

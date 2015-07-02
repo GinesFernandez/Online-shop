@@ -17,6 +17,7 @@
     <!--BRUSHES-->
     <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource ThemeColor4}" />
     <SolidColorBrush x:Key="ControlBrush" Color="{StaticResource ThemeColor5}" />
+    <SolidColorBrush x:Key="ControlBrush2" Color="{StaticResource ThemeColor3}" />
     <SolidColorBrush x:Key="ControlDisabledBrush" Color="{StaticResource DisabledColor}" />
     <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource ThemeColor2}" />
     <SolidColorBrush x:Key="BorderBrush2" Color="{StaticResource ThemeColor1}" />
@@ -24,6 +25,7 @@
     <SolidColorBrush x:Key="TextBrush" Color="{StaticResource ThemeColor1}" />
     <SolidColorBrush x:Key="TextBrush2" Color="{StaticResource ThemeColor3}" />
     <SolidColorBrush x:Key="TextBrush3" Color="{StaticResource ThemeColor5}" />
+    <SolidColorBrush x:Key="TextBrush4" Color="{StaticResource ThemeColor4}" />
 
     <SolidColorBrush x:Key="TextBoxMouseOverBorderBrush" Color="{StaticResource HighlightDarkColor}" />
     <SolidColorBrush x:Key="TextBoxMouseOverInnerBorderBrush" Color="{StaticResource HighlightLightColor}" />

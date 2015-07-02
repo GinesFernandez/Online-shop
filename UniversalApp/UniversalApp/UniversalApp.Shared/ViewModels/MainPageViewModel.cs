@@ -1,16 +1,14 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using System;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
+using UniversalApp.Model;
 using UniversalApp.Services.Dialogs;
 using UniversalApp.Services.Navigation;
+using UniversalApp.Strings;
 using UniversalApp.ViewModels.Base;
 using Windows.UI.Xaml.Navigation;
-using UniversalApp.Strings;
-using System;
-using Microsoft.WindowsAzure.MobileServices;
-using UniversalApp.Model;
-using UniversalApp.Helpers;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace UniversalApp.ViewModels
 {
@@ -19,11 +17,12 @@ namespace UniversalApp.ViewModels
         #region Declarations
         /////////////////////////////////////////////////////////////////
         private const int ItemsPerPage = 10;
-
         private int _currentPage;
-
+        
         private readonly IDialogService _dialogService;
 
+        public delegate void LoadedRequestAction();
+        public event LoadedRequestAction LoadedRequest;
         /////////////////////////////////////////////////////////////////
         #endregion
 
@@ -200,7 +199,7 @@ namespace UniversalApp.ViewModels
             if (!Globals.ResourcesLoaded)
                 LoadResources();
 
-            LoadProducts(_currentPage);
+            LoadProducts();
             return null;
         }
 
@@ -250,7 +249,7 @@ namespace UniversalApp.ViewModels
             }
         }
 
-        private async void LoadProducts(int page = 0)
+        public async void LoadProducts(int page = 0)
         {
             ProgressBarONOFF();
 
@@ -258,10 +257,15 @@ namespace UniversalApp.ViewModels
             {
                 var atribsList = await App.MobileService.GetTable<Products>().Skip(ItemsPerPage * page).Take(ItemsPerPage).ToCollectionAsync();
 
-                foreach (Products p in atribsList)
-                    _collectionProducts.Add(p);
+                if (atribsList.Count > 0)
+                    foreach (Products p in atribsList)
+                        _collectionProducts.Add(p);
+                else
+                    _currentPage = _currentPage > 0 ? _currentPage - 1 : 0; //no more pages, so return _currentPage to previous state
 
                 ProgressBarONOFF(false);
+
+                LoadedRequest();
             }
             catch (MobileServiceInvalidOperationException azureExc)
             {
@@ -277,6 +281,14 @@ namespace UniversalApp.ViewModels
             }
         }
 
+        public async Task LoadProductsNextPage()
+        {
+            if (!IsBusy)
+            {
+                _currentPage++;
+                LoadProducts(_currentPage);
+            }
+        }
         /////////////////////////////////////////////////////////////////
         #endregion
     }

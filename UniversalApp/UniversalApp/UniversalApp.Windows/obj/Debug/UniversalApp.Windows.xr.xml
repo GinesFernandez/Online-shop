@@ -295,11 +295,11 @@
     <RootType FullName="Telerik.UI.Xaml.Controls.Data.ListView.RadListViewItem" />
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
       <RootProperty Name="Source" />
-      <RootProperty Name="MaxHeight" />
-      <RootProperty Name="MaxWidth" />
       <RootProperty Name="Stretch" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="MaxHeight" />
+      <RootProperty Name="MaxWidth" />
       <RootProperty Name="MinHeight" />
       <RootProperty Name="MinWidth" />
       <RootProperty Name="HorizontalAlignment" />

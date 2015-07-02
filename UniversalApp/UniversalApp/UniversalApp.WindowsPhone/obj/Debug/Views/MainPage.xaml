@@ -2,6 +2,8 @@
 
     <Page.Resources>
 
+        <Thickness x:Key="FormMargin">5,5,5,5</Thickness>
+
         <LinearGradientBrush x:Key="GradientBrush" EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="Transparent" Offset="0" />
             <GradientStop Color="{StaticResource ThemeColor3}" Offset="1" />
@@ -9,10 +11,10 @@
 
         <DataTemplate x:Key="WrapItemTemplate">
             <Grid>
-                <Image Source="{Binding SmallPicture}" MaxHeight="215" MaxWidth="290" Stretch="Uniform" VerticalAlignment="Stretch" Margin="5" />
+                <Image Source="{Binding SmallPicture}" Stretch="Uniform" VerticalAlignment="Stretch" Margin="5" MaxHeight="215" MaxWidth="290" />
                 <StackPanel Background="{StaticResource GradientBrush}" Height="60" VerticalAlignment="Bottom">
-                    <TextBlock Margin="20,5,20,3" Text="{Binding Name}" TextTrimming="WordEllipsis" TextWrapping="WrapWholeWords" Height="25" Foreground="Black" />
-                    <TextBlock Margin="20 0" VerticalAlignment="Top" Text="{Binding Price, Converter={StaticResource TextCurrencyConverter}}" TextTrimming="WordEllipsis" MaxHeight="25" Foreground="Black">
+                    <TextBlock Margin="20,5,20,3" Text="{Binding Name}" TextTrimming="WordEllipsis" TextWrapping="WrapWholeWords" Height="25" Foreground="{StaticResource TextBrush2}" />
+                    <TextBlock Margin="20 0" VerticalAlignment="Top" Text="{Binding Price, Converter={StaticResource TextCurrencyConverter}}" TextTrimming="WordEllipsis" MaxHeight="25" Foreground="{StaticResource TextBrush2}">
                     </TextBlock>
                 </StackPanel>
                 <Rectangle Height="4" VerticalAlignment="Bottom" Fill="{StaticResource BorderBrush}" />
@@ -39,6 +41,42 @@
 
         <ProgressBar x:Name="progressBar" IsIndeterminate="{Binding IsBusy}" />
 
+        <!--Details-->
+        <Border Visibility="{Binding IsDetailVisible, Converter={StaticResource BoolToVisibilityConverter}}" Canvas.ZIndex="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50" BorderThickness="2" CornerRadius="3" Background="{StaticResource ControlBrush2}" BorderBrush="{StaticResource BorderBrush2}">
+            <Grid>
+
+                <Image Source="{Binding SelectedProduct.Picture}" MinHeight="215" MinWidth="290" Stretch="Uniform" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,50" />
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="{StaticResource FormMargin}">
+                    <HyperlinkButton x:Uid="bCloseDetail" ToolTipService.ToolTip="log in" Command="{Binding AddToCartCommand}">
+                        <Path Data="{StaticResource IconCartAdd}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
+                        </Path>
+                    </HyperlinkButton>
+                    <HyperlinkButton x:Uid="bCloseDetail" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="{StaticResource FormMargin}" ToolTipService.ToolTip="close" Command="{Binding CloseDetailCommand}">
+                        <Path Data="{StaticResource IconCancel}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
+                        </Path>
+                    </HyperlinkButton>
+                </StackPanel>
+
+                <HyperlinkButton x:Uid="bNextDetail" Margin="{StaticResource FormMargin}" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTipService.ToolTip="next" Command="{Binding NextDetailCommand}">
+                    <Path Data="{StaticResource IconRightArrow}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
+                    </Path>
+                </HyperlinkButton>
+                <HyperlinkButton x:Uid="bPreviousDetail" Margin="{StaticResource FormMargin}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTipService.ToolTip="prevoius" Command="{Binding PreviousDetailCommand}">
+                    <Path Data="{StaticResource IconLeftArrow}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
+                    </Path>
+                </HyperlinkButton>
+
+                <StackPanel Canvas.ZIndex="11" Background="{StaticResource BorderBrush2}" MinHeight="60" VerticalAlignment="Bottom">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding SelectedProduct.Name}" TextTrimming="WordEllipsis" TextWrapping="WrapWholeWords" Height="25" FontWeight="Bold" Margin="{StaticResource FormMargin}" Foreground="{StaticResource TextBrush4}" />
+                        <TextBlock Text="{Binding SelectedProduct.Price, Converter={StaticResource TextCurrencyConverter}}" FontWeight="Bold" VerticalAlignment="Top" Margin="{StaticResource FormMargin}" Foreground="{StaticResource TextBrush4}" />
+                    </StackPanel>
+                    <TextBlock Margin="{StaticResource FormMargin}" VerticalAlignment="Top" Text="{Binding SelectedProduct.Description}" Foreground="{StaticResource TextBrush4}" TextWrapping="Wrap" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -48,7 +86,9 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
+            <!--title-->
             <Grid Grid.Row="0" Margin="0,5,0,0">
+
                 <TextBlock x:Name="oTitle" x:Uid="oTitle" Grid.Row="0" Grid.Column="0" Text="Kaotiña's Store" Style="{StaticResource TitleTextBlockStyle}" Foreground="{StaticResource TitleBrush}" HorizontalAlignment="Left" />
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
@@ -62,12 +102,13 @@
                 </StackPanel>
             </Grid>
 
-            <telerik:RadListView x:Name="listViewProducts" Grid.Row="1" Margin="0 5 0 0" Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ItemsSource="{Binding CollectionProducts}" ItemTemplate="{StaticResource WrapItemTemplate}">
+            <!--products-->
+            <telerik:RadListView x:Name="listViewProducts" Grid.Row="1" Margin="0 5 0 0" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ItemsSource="{Binding CollectionProducts}" ItemTemplate="{StaticResource WrapItemTemplate}" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}">
                 <telerik:RadListView.LayoutDefinition>
                     <listview:WrapLayoutDefinition ItemWidth="300" />
                 </telerik:RadListView.LayoutDefinition>
             </telerik:RadListView>
-
+            
         </Grid>
 
     </Grid>
