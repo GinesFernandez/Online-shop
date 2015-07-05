@@ -11,6 +11,7 @@
             
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Assets/Styles.xaml"/>
+                <ResourceDictionary Source="Assets/TelerikStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             <base:ViewModelLocator x:Key="Locator" />

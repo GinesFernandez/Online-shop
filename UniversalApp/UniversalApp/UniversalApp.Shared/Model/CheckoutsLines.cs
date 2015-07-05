@@ -18,9 +18,6 @@ namespace UniversalApp.Model
         [JsonProperty(PropertyName = "ProductId")]
         public Guid ProductId { get; set; }
 
-
-        public Products Product { get; set; }
-
         private int _quantity;
         public int Quantity
         {
@@ -41,7 +38,49 @@ namespace UniversalApp.Model
 
         public double TotalPrice
         {
-            get { return _quantity * Product.Price; }
+            get { return _quantity * ProductPrice; }
+        }
+
+        private double _productPrice;
+        public double ProductPrice
+        {
+            get { return _productPrice; }
+            set
+            {
+                if (_productPrice != value)
+                {
+                    _productPrice = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        private string _productSmallPicture;
+        public string ProductSmallPicture
+        {
+            get { return _productSmallPicture; }
+            set
+            {
+                if (_productSmallPicture != value)
+                {
+                    _productSmallPicture = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        private string _productName;
+        public string ProductName
+        {
+            get { return _productName; }
+            set
+            {
+                if (_productName != value)
+                {
+                    _productName = value;
+                    RaisePropertyChanged();
+                }
+            }
         }
     }
 }

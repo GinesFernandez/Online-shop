@@ -216,4 +216,10 @@
   <data name="oCartTotal.Text" xml:space="preserve">
     <value>Total: </value>
   </data>
+  <data name="CheckoutCompleted" xml:space="preserve">
+    <value>Congratulations, your checkout has been completed correctly!</value>
+  </data>
+  <data name="ErrorUserNorLoged" xml:space="preserve">
+    <value>Sorry you need to log in first, thanks</value>
+  </data>
 </root>

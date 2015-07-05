@@ -7,6 +7,8 @@ Assets\Brushes.xbf
 Assets\Fonts.xbf
 Assets\Images.xbf
 Assets\Styles.xbf
+Assets\TelerikStyles.xbf
 UniversalApp.Windows.xr.xml
+Views\CheckoutView.xbf
 Views\LoginView.xbf
 Views\MainPage.xbf

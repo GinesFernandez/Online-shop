@@ -11,9 +11,7 @@
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:converters="using:UniversalApp.Converters"
     xmlns:telerik="using:Telerik.UI.Xaml.Controls.Data"
-    xmlns:telerikData="using:Telerik.Data.Core"
     xmlns:listview="using:Telerik.UI.Xaml.Controls.Data.ListView"
-    xmlns:listViewPrimitives="using:Telerik.UI.Xaml.Controls.Data.ListView.Primitives"
     
     DataContext="{Binding MainPageViewModel, Source={StaticResource Locator}}"
     
@@ -58,10 +56,10 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <Image Source="{Binding Product.SmallPicture}" wp81:MaxHeight="50" win81:MaxHeight="70" wp81:MaxWidth="80" win81:MaxWidth="100"
+                    <Image Source="{Binding ProductSmallPicture}" wp81:MaxHeight="50" win81:MaxHeight="70" wp81:MaxWidth="80" win81:MaxWidth="100"
                        Stretch="Uniform" VerticalAlignment="Stretch" Margin="5"/>
                     <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center">
-                        <TextBlock Text="{Binding Product.Name}" TextTrimming="WordEllipsis" Margin="5"
+                        <TextBlock Text="{Binding ProductName}" TextTrimming="WordEllipsis" Margin="5"
                                    TextWrapping="WrapWholeWords" TextAlignment="Center"
                                    Foreground="{StaticResource TextBrush}"/>
                         <TextBlock Text="{Binding Quantity, Converter={StaticResource TextQuantityConverter}}" Margin="5" 
@@ -85,12 +83,7 @@
                 </Grid>
             </Border>
         </DataTemplate>
-
-        <Style TargetType="listview:RadListViewItem">
-            <Setter Property="Margin" Value="1 1 0 1" />
-            <Setter Property="Padding" Value="0" />
-        </Style>
-
+       
     </Page.Resources>
 
     <i:Interaction.Behaviors>
@@ -205,7 +198,7 @@
                 <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource BorderBrush2}"/>
             </Grid>
 
-            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" Margin="10">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -238,10 +231,21 @@
                     </telerik:RadListView>
 
                     <!--Cart-->
-                    <TextBlock x:Uid="oTitleCart" Grid.Row="0" Grid.Column="2" Text="Cart" Margin="5"
+                    <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
+                        <TextBlock x:Uid="oTitleCart" Text="Cart" Margin="{StaticResource FormMargin}"
                                    Style="{StaticResource HeaderTextBlockStyle}"
                                    HorizontalAlignment="Left" />
-                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Margin="5">
+                        <HyperlinkButton x:Uid="bCheckout" Margin="{StaticResource FormMargin}"
+                                         ToolTipService.ToolTip="checkout"
+                                         Command="{Binding CheckoutCommand}">
+                            <Path Data="{StaticResource IconCart}"
+                              Stretch="Uniform"
+                              Fill="{StaticResource BorderBrush}">
+                            </Path>
+                        </HyperlinkButton>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Margin="{StaticResource FormMargin}">
                         <TextBlock x:Uid="oCartTotal" Text="Total: " />
                         <TextBlock Text="{Binding CartTotal, Converter={StaticResource TextCurrencyConverter}}" />
                     </StackPanel>

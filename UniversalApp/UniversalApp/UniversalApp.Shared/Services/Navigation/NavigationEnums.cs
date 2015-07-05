@@ -8,7 +8,6 @@ namespace UniversalApp.Services.Navigation
     {
         MainPage = 0,
         LoginView = 1,
-        DetailsView = 2,
         CheckoutView = 3
     }
 }

@@ -21,9 +21,12 @@ namespace UniversalApp.Strings
         public static readonly string ErrorIncorrectPassword = ResourceManager.Current.MainResourceMap.GetValue("Resources/ErrorIncorrectPassword", ResourceContext.GetForCurrentView()).ValueAsString;
         public static readonly string ErrorPasswordConfirmNotValid = ResourceManager.Current.MainResourceMap.GetValue("Resources/ErrorPasswordConfirmNotValid", ResourceContext.GetForCurrentView()).ValueAsString;
         public static readonly string ErrorUserAlreadyExists = ResourceManager.Current.MainResourceMap.GetValue("Resources/ErrorUserAlreadyExists", ResourceContext.GetForCurrentView()).ValueAsString;
-        
+        public static readonly string ErrorUserNorLoged = ResourceManager.Current.MainResourceMap.GetValue("Resources/ErrorUserNorLoged", ResourceContext.GetForCurrentView()).ValueAsString;
+
         public static readonly string NotLogged = ResourceManager.Current.MainResourceMap.GetValue("Resources/NotLogged", ResourceContext.GetForCurrentView()).ValueAsString;
         public static readonly string DefaultTitle = ResourceManager.Current.MainResourceMap.GetValue("Resources/DefaultTitle", ResourceContext.GetForCurrentView()).ValueAsString;
+        public static readonly string CheckoutCompleted = ResourceManager.Current.MainResourceMap.GetValue("Resources/CheckoutCompleted", ResourceContext.GetForCurrentView()).ValueAsString;
+        
         
     }
 }

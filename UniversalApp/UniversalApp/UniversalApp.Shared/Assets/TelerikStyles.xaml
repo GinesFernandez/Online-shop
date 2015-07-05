@@ -1,0 +1,18 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UniversalApp.Assets"
+    xmlns:telerik="using:Telerik.UI.Xaml.Controls.Data"
+    xmlns:listview="using:Telerik.UI.Xaml.Controls.Data.ListView"
+    
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:win81="condition:WINDOWS_APP"
+    xmlns:wp81="condition:WINDOWS_PHONE_APP"
+    mc:Ignorable="win81 wp81">
+
+    <Style TargetType="listview:RadListViewItem">
+        <Setter Property="Margin" Value="1 1 0 1" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+    
+</ResourceDictionary>

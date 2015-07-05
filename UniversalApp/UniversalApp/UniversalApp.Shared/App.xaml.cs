@@ -131,6 +131,8 @@ namespace UniversalApp
             var deferral = e.SuspendingOperation.GetDeferral();
 
             // TODO: Guardar el estado de la aplicación y detener toda actividad en segundo plano
+            //TODO: save cart state in storage
+
             deferral.Complete();
         }
     }

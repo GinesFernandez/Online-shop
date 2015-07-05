@@ -18,7 +18,7 @@ namespace UniversalApp.ViewModels
         /////////////////////////////////////////////////////////////////
         private const int ItemsPerPage = 10;
         private int _currentPage;
-        
+
         private readonly IDialogService _dialogService;
 
         public delegate void LoadedRequestAction();
@@ -53,18 +53,9 @@ namespace UniversalApp.ViewModels
             }
         }
 
-        //private ObservableCollection<CheckoutsLines> _currentCart = new ObservableCollection<CheckoutsLines>();
         public ObservableCollection<CheckoutsLines> CurrentCart
         {
             get { return Globals.CurrentCart; }
-            //set
-            //{
-            //    if (value != _currentCart)
-            //    {
-            //        _currentCart = value;
-            //        RaisePropertyChanged();
-            //    }
-            //}
         }
 
         private Products _selectedProduct;
@@ -100,9 +91,8 @@ namespace UniversalApp.ViewModels
         }
 
         public double CartTotal
-
         {
-            get { return Globals.CurrentCart.Sum(c => c.Quantity * c.Product.Price); }
+            get { return Globals.CurrentCart.Sum(c => c.Quantity * c.ProductPrice); }
         }
 
         private bool _isDetailVisible;
@@ -206,9 +196,17 @@ namespace UniversalApp.ViewModels
             if (alreadyIn != null)
                 alreadyIn.Quantity++;
             else
-                CurrentCart.Add(new CheckoutsLines() { ProductId = SelectedProduct.Id, Product = SelectedProduct, Quantity = 1 });
+                CurrentCart.Add(new CheckoutsLines()
+                {
+                    ProductId = SelectedProduct.Id,
+                    ProductPrice = SelectedProduct.Price,
+                    Quantity = 1,
+                    ProductSmallPicture = SelectedProduct.SmallPicture,
+                    ProductName = SelectedProduct.Name
+                });
 
             RaisePropertyChanged("CartTotal");
+            CheckoutCommand.RaiseCanExecuteChanged();
 
             IsDetailVisible = false;
         }
@@ -229,8 +227,25 @@ namespace UniversalApp.ViewModels
                 CurrentCart.Remove(SelectedCartItem);
 
             RaisePropertyChanged("CartTotal");
+            CheckoutCommand.RaiseCanExecuteChanged();
         }
 
+        private DelegateCommand _checkoutCommand;
+        public DelegateCommand CheckoutCommand
+        {
+            get { return _checkoutCommand = _checkoutCommand ?? new DelegateCommand(CheckoutCommandDelegate, CanCheckoutCommandDelegate); }
+        }
+        public bool CanCheckoutCommandDelegate()
+        {
+            return CurrentCart.Any();
+        }
+        public void CheckoutCommandDelegate()
+        {
+            if (Globals.CurrentUser != null)
+                NavigationService.NavigateToPage(ViewsEnum.CheckoutView, CurrentCart);
+            else
+                _dialogService.ShowAsync(MessageBoxButton.OK, Cadenas.ErrorUserNorLoged);
+        }
         /////////////////////////////////////////////////////////////////
         #endregion
 
