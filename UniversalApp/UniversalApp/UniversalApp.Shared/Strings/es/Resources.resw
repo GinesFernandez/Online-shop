@@ -201,4 +201,16 @@
   <data name="ErrorUserAlreadyExists" xml:space="preserve">
     <value>El usuario con email {0} ya existe</value>
   </data>
+  <data name="oEmptyCartList.Text" xml:space="preserve">
+    <value>vacío</value>
+  </data>
+  <data name="oEmptyProductList.Text" xml:space="preserve">
+    <value>cargando...</value>
+  </data>
+  <data name="oTitleCart.Text" xml:space="preserve">
+    <value>Carrito</value>
+  </data>
+  <data name="oTitleProducts.Text" xml:space="preserve">
+    <value>Artículos</value>
+  </data>
 </root>

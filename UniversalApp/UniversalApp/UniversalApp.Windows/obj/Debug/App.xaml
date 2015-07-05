@@ -19,7 +19,7 @@
             <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
             <converters:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
             <converters:TextCurrencyConverter x:Key="TextCurrencyConverter"/>
-            
+            <converters:TextQuantityConverter x:Key="TextQuantityConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 

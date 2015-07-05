@@ -85,6 +85,20 @@ namespace UniversalApp.ViewModels
             }
         }
 
+        private CheckoutsLines _selectedCartItem;
+        public CheckoutsLines SelectedCartItem
+        {
+            get { return _selectedCartItem; }
+            set
+            {
+                if (value != _selectedCartItem)
+                {
+                    _selectedCartItem = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
         private bool _isDetailVisible;
         public bool IsDetailVisible
         {
@@ -179,9 +193,36 @@ namespace UniversalApp.ViewModels
         }
         public void AddToCartCommandDelegate()
         {
-            CurrentCart.Add(new CheckoutsLines() { ProductId = SelectedProduct.Id, Product = SelectedProduct });
+            if (SelectedProduct == null)
+                return;
+
+            var alreadyIn = CurrentCart.FirstOrDefault(c => c.ProductId == SelectedProduct.Id);
+            if (alreadyIn != null)
+                alreadyIn.Quantity++;
+            else
+                CurrentCart.Add(new CheckoutsLines() { ProductId = SelectedProduct.Id, Product = SelectedProduct, Quantity = 1 });
+
+            RaisePropertyChanged("CurrentCart");
+
             IsDetailVisible = false;
         }
+
+        private DelegateCommand _removeCartCommand;
+        public DelegateCommand RemoveCartCommand
+        {
+            get { return _removeCartCommand = _removeCartCommand ?? new DelegateCommand(RemoveCartCommandDelegate); }
+        }
+        public void RemoveCartCommandDelegate()
+        {
+            if (SelectedCartItem == null)
+                return;
+
+            if (SelectedCartItem.Quantity > 1)
+                SelectedCartItem.Quantity--;
+            else
+                CurrentCart.Remove(SelectedCartItem);
+        }
+
         /////////////////////////////////////////////////////////////////
         #endregion
 

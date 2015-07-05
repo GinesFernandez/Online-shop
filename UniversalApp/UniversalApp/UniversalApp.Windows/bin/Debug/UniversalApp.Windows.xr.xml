@@ -24,9 +24,16 @@
     <RootPropertyPathName Name="LoginCommand" />
     <RootPropertyPathName Name="IsBusy" />
     <RootPropertyPathName Name="MainPageViewModel" />
-    <RootPropertyPathName Name="Price" />
+    <RootPropertyPathName Name="DataContext" />
+    <RootPropertyPathName Name="RemoveCartCommand" />
+    <RootPropertyPathName Name="TotalPrice" />
+    <RootPropertyPathName Name="Quantity" />
+    <RootPropertyPathName Name="Product" />
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="SmallPicture" />
+    <RootPropertyPathName Name="Price" />
+    <RootPropertyPathName Name="CurrentCart" />
+    <RootPropertyPathName Name="SelectedCartItem" />
     <RootPropertyPathName Name="CollectionProducts" />
     <RootPropertyPathName Name="SelectedProduct" />
     <RootPropertyPathName Name="CurrentUserText" />
@@ -51,6 +58,7 @@
     <RootType FullName="UniversalApp.Converters.BoolToVisibilityConverter" />
     <RootType FullName="UniversalApp.Converters.InverseBoolToVisibilityConverter" />
     <RootType FullName="UniversalApp.Converters.TextCurrencyConverter" />
+    <RootType FullName="UniversalApp.Converters.TextQuantityConverter" />
     <RootType FullName="Windows.UI.Color" />
     <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
       <RootProperty Name="Color" />
@@ -86,11 +94,12 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="Text" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="Style" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Margin" />
       <RootProperty Name="TextTrimming" />
+      <RootProperty Name="TextAlignment" />
       <RootProperty Name="Height" />
       <RootProperty Name="MaxHeight" />
       <RootProperty Name="FontWeight" />
@@ -213,11 +222,11 @@
       <RootProperty Name="Background" />
       <RootProperty Name="CornerRadius" />
       <RootProperty Name="Opacity" />
+      <RootProperty Name="Child" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="Child" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
       <RootProperty Name="Fill" />
@@ -241,6 +250,7 @@
       <RootProperty Name="Source" />
       <RootProperty Name="Converter" />
       <RootProperty Name="Mode" />
+      <RootProperty Name="ElementName" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Thickness" />
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
@@ -270,9 +280,9 @@
       <RootProperty Name="Orientation" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Background" />
       <RootProperty Name="Height" />
-      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="MinHeight" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
@@ -316,8 +326,11 @@
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="ItemTemplate" />
       <RootProperty Name="SelectedItem" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="EmptyContent" />
       <RootProperty Name="LayoutDefinition" />
     </RootType>
+    <RootType FullName="Telerik.UI.Xaml.Controls.Data.ListView.StackLayoutDefinition" />
     <RootType FullName="Telerik.UI.Xaml.Controls.Data.ListView.WrapLayoutDefinition">
       <RootProperty Name="ItemWidth" />
     </RootType>

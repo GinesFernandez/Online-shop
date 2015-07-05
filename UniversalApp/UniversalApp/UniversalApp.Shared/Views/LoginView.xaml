@@ -78,10 +78,12 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock x:Name="oTitle" x:Uid="oTitle" Grid.Row="0" Grid.Column="0" Text="Kaotiña's Store"
+            <TextBlock x:Name="oTitle" x:Uid="oTitle" Grid.Row="0" Grid.Column="0" Text="Kaotiña's Store" Margin="0,5,0,0"
                        Style="{StaticResource TitleTextBlockStyle}"
                        Foreground="{StaticResource TitleBrush}"
                        HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource BorderBrush2}"/>
 
             <ScrollViewer Grid.Row="2" Grid.Column="1" Visibility="{Binding IsRegistering, Converter={StaticResource InverseBoolToVisibilityConverter}}"
                               VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
