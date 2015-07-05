@@ -106,7 +106,7 @@
                         <TextBlock Text="{Binding CartTotal, Converter={StaticResource TextCurrencyConverter}}" />
                     </StackPanel>
 
-                    <telerik:RadListView x:Name="listViewCart" Grid.Row="2" Grid.Column="1" wp81:Width="300" win81:Width="625"
+                    <telerik:RadListView x:Name="listViewCart" Grid.Row="2" Grid.Column="1" wp81:Width="320" win81:Width="625"
                                      Margin="0 5 0 0" Orientation="Vertical"
                                      VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                                      ItemsSource="{Binding Cart}"

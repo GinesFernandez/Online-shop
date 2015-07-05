@@ -1,3 +1,4 @@
+Scale=80
 Scale=100
 Language=ES
 Language=EN

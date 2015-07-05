@@ -127,28 +127,16 @@
     <AppxPackagedFile Include="E:\Telerik\UI for Windows Universal Q2 2015\SDKs\Windows Phone 8.1\Telerik UI for Windows Universal\Redist\CommonConfiguration\neutral\Telerik.UI.Xaml.Primitives\Themes\ThemeResourcesLight.xbf">
       <PackagePath>Telerik.UI.Xaml.Primitives\Themes\ThemeResourcesLight.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\Assets\Logo.scale-240.png">
-      <PackagePath>Assets\Logo.scale-240.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\Assets\SmallLogo.scale-240.png">
-      <PackagePath>Assets\SmallLogo.scale-240.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\Assets\SplashScreen.scale-240.png">
-      <PackagePath>Assets\SplashScreen.scale-240.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\Assets\Square71x71Logo.scale-240.png">
-      <PackagePath>Assets\Square71x71Logo.scale-240.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\Assets\StoreLogo.scale-240.png">
-      <PackagePath>Assets\StoreLogo.scale-240.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\Assets\WideLogo.scale-240.png">
-      <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\Assets\WideLogo.scale-100.png">
+      <PackagePath>Assets\WideLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\bin\Debug\App.xbf">

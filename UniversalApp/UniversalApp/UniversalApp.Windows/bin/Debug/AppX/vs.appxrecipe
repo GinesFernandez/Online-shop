@@ -8,7 +8,7 @@
     <PackageArchitecture>neutral</PackageArchitecture>
     <PackageIdentityName>8106770a-2a93-41c8-91e1-3bb6c9ef7bf0</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\obj\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>612C4F16A942440D4BF4506D08F5F6C6775BEBBBE814509EBCAC8C39547D5D72</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>8659F602C3FAB6F3F9E6C11A1D9D9CC04A792C58D28B5E55D1C8C0787803258A</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>8106770a-2a93-41c8-91e1-3bb6c9ef7bf0_1.0.0.0_neutral__95qre5tem8q8m</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>8106770a-2a93-41c8-91e1-3bb6c9ef7bf0_95qre5tem8q8m!App</RegisteredUserModeAppID>
     <RegisteredPackageID>8106770a-2a93-41c8-91e1-3bb6c9ef7bf0</RegisteredPackageID>
@@ -20,13 +20,13 @@
     <AppXManifest Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-07-05T03:12:47.069</Modified>
+      <Modified>2015-07-05T04:25:55.996</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\UniversalApp.Windows.exe">
       <PackagePath>UniversalApp.Windows.exe</PackagePath>
-      <Modified>2015-07-05T04:09:26.880</Modified>
+      <Modified>2015-07-05T04:25:55.709</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\References\CommonConfiguration\Neutral\Microsoft.Xaml.Interactions.dll">
       <PackagePath>Microsoft.Xaml.Interactions.dll</PackagePath>
@@ -215,7 +215,7 @@
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-02-27T03:36:22.000</Modified>
+      <Modified>2015-07-05T04:25:14.813</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\Assets\SmallLogo.scale-100.png">
       <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
@@ -225,12 +225,17 @@
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-02-27T03:36:22.000</Modified>
+      <Modified>2015-07-05T04:23:09.107</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2014-02-27T03:36:22.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\Assets\Wide310x150Logo.scale-80.png">
+      <PackagePath>Assets\Wide310x150Logo.scale-80.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-07-05T04:20:53.407</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
@@ -242,7 +247,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\Assets\Fonts.xbf">
       <PackagePath>Assets\Fonts.xbf</PackagePath>
-      <Modified>2015-07-05T04:09:26.543</Modified>
+      <Modified>2015-07-05T04:25:55.382</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\Assets\Images.xbf">
       <PackagePath>Assets\Images.xbf</PackagePath>
@@ -250,23 +255,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\Assets\TelerikStyles.xbf">
       <PackagePath>Assets\TelerikStyles.xbf</PackagePath>
-      <Modified>2015-07-05T04:09:26.543</Modified>
+      <Modified>2015-07-05T04:25:55.383</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\Assets\Styles.xbf">
       <PackagePath>Assets\Styles.xbf</PackagePath>
-      <Modified>2015-07-05T04:09:26.546</Modified>
+      <Modified>2015-07-05T04:25:55.386</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\Views\CheckoutView.xbf">
       <PackagePath>Views\CheckoutView.xbf</PackagePath>
-      <Modified>2015-07-05T04:09:26.548</Modified>
+      <Modified>2015-07-05T04:25:55.389</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\Views\LoginView.xbf">
       <PackagePath>Views\LoginView.xbf</PackagePath>
-      <Modified>2015-07-05T04:09:26.550</Modified>
+      <Modified>2015-07-05T04:25:55.391</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\Views\MainPage.xbf">
       <PackagePath>Views\MainPage.xbf</PackagePath>
-      <Modified>2015-07-05T04:09:26.552</Modified>
+      <Modified>2015-07-05T04:25:55.394</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\UniversalApp.Windows.xr.xml">
       <PackagePath>UniversalApp.Windows.xr.xml</PackagePath>
@@ -274,7 +279,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.Windows\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-07-05T04:09:27.128</Modified>
+      <Modified>2015-07-05T04:25:55.855</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

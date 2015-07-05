@@ -183,7 +183,6 @@ C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\Univers
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\bin\Debug\Telerik.UI.Xaml.Input.xml
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\bin\Debug\Telerik.UI.Xaml.Primitives.dll
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\bin\Debug\Telerik.UI.Xaml.Primitives.xml
-C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\obj\Debug\UniversalApp.WindowsPhone.csprojResolveAssemblyReference.cache
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\bin\Debug\Assets\TelerikStyles.xbf
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\bin\Debug\Views\CheckoutView.xbf
 C:\Users\Ginés\Documents\Programacion\BitBuck\UniversalApp\UniversalApp\UniversalApp.WindowsPhone\obj\Debug\preprocessedxaml\Assets\TelerikStyles.xaml
