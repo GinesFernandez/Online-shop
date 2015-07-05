@@ -213,4 +213,7 @@
   <data name="oTitleProducts.Text" xml:space="preserve">
     <value>Artículos</value>
   </data>
+  <data name="oCartTotal.Text" xml:space="preserve">
+    <value>Total: </value>
+  </data>
 </root>

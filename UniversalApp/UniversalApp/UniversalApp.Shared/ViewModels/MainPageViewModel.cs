@@ -53,18 +53,18 @@ namespace UniversalApp.ViewModels
             }
         }
 
-        private ObservableCollection<CheckoutsLines> _currentCart = new ObservableCollection<CheckoutsLines>();
+        //private ObservableCollection<CheckoutsLines> _currentCart = new ObservableCollection<CheckoutsLines>();
         public ObservableCollection<CheckoutsLines> CurrentCart
         {
-            get { return _currentCart; }
-            set
-            {
-                if (value != _currentCart)
-                {
-                    _currentCart = value;
-                    RaisePropertyChanged();
-                }
-            }
+            get { return Globals.CurrentCart; }
+            //set
+            //{
+            //    if (value != _currentCart)
+            //    {
+            //        _currentCart = value;
+            //        RaisePropertyChanged();
+            //    }
+            //}
         }
 
         private Products _selectedProduct;
@@ -97,6 +97,12 @@ namespace UniversalApp.ViewModels
                     RaisePropertyChanged();
                 }
             }
+        }
+
+        public double CartTotal
+
+        {
+            get { return Globals.CurrentCart.Sum(c => c.Quantity * c.Product.Price); }
         }
 
         private bool _isDetailVisible;
@@ -202,7 +208,7 @@ namespace UniversalApp.ViewModels
             else
                 CurrentCart.Add(new CheckoutsLines() { ProductId = SelectedProduct.Id, Product = SelectedProduct, Quantity = 1 });
 
-            RaisePropertyChanged("CurrentCart");
+            RaisePropertyChanged("CartTotal");
 
             IsDetailVisible = false;
         }
@@ -221,6 +227,8 @@ namespace UniversalApp.ViewModels
                 SelectedCartItem.Quantity--;
             else
                 CurrentCart.Remove(SelectedCartItem);
+
+            RaisePropertyChanged("CartTotal");
         }
 
         /////////////////////////////////////////////////////////////////

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using UniversalApp.Model;
 
@@ -10,6 +11,13 @@ namespace UniversalApp
         internal static bool ResourcesLoaded;
 
         public static Users CurrentUser { get; set; }
+
+        private static ObservableCollection<CheckoutsLines> _currentCart = new ObservableCollection<CheckoutsLines>();
+        public static ObservableCollection<CheckoutsLines> CurrentCart
+        {
+            get { return _currentCart; }
+            set { _currentCart = value; }
+        }
 
         private static float _taxPercentage = 18;
         public static float TaxPercentage

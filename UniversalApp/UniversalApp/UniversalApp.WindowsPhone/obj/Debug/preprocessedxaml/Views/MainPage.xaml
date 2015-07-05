@@ -9,7 +9,7 @@
             <GradientStop Color="{StaticResource ThemeColor3}" Offset="1" />
         </LinearGradientBrush>
 
-        <DataTemplate x:Key="WrapItemTemplate">
+        <DataTemplate x:Key="ProductItemTemplate">
             <Grid>
                 <Image Source="{Binding SmallPicture}" Stretch="Uniform" VerticalAlignment="Stretch" Margin="5" MaxHeight="215" MaxWidth="290" />
                 <StackPanel Background="{StaticResource GradientBrush}" Height="60" VerticalAlignment="Bottom">
@@ -19,6 +19,32 @@
                 </StackPanel>
                 <Rectangle Height="4" VerticalAlignment="Bottom" Fill="{StaticResource BorderBrush}" />
             </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="CartItemTemplate">
+            <Border BorderThickness="0,0,3,3" BorderBrush="{StaticResource BorderBrush}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="{Binding Product.SmallPicture}" Stretch="Uniform" VerticalAlignment="Stretch" Margin="5" MaxHeight="50" MaxWidth="80" />
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Product.Name}" TextTrimming="WordEllipsis" Margin="5" TextWrapping="WrapWholeWords" TextAlignment="Center" Foreground="{StaticResource TextBrush}" />
+                        <TextBlock Text="{Binding Quantity, Converter={StaticResource TextQuantityConverter}}" Margin="5" TextAlignment="Center" Foreground="{StaticResource TextBrush}" />
+                    </StackPanel>
+                    <TextBlock Grid.Column="2" Text="{Binding TotalPrice, Converter={StaticResource TextCurrencyConverter}}" Margin="5" TextTrimming="WordEllipsis" TextAlignment="Right" Foreground="{StaticResource TextBrush}" VerticalAlignment="Center">
+                    </TextBlock>
+                    <HyperlinkButton x:Uid="bRemovecart" Grid.Column="3" Margin="5,5,8,5" ToolTipService.ToolTip="remove from cart" Command="{Binding DataContext.RemoveCartCommand, ElementName=listViewCart}">
+                        <!--Command="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=DataContext.RemoveCartCommand}">-->
+                        <Path Data="{StaticResource IconCartAdd}" Stretch="Uniform" Fill="{StaticResource BorderBrush}">
+                        </Path>
+                    </HyperlinkButton>
+                </Grid>
+            </Border>
         </DataTemplate>
 
         <Style TargetType="listview:RadListViewItem">
@@ -78,18 +104,15 @@
         </Border>
 
         <Grid Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <!--title-->
-            <Grid Grid.Row="0" Margin="0,5,0,0">
+            <Grid Grid.Row="0" Margin="0,5,0,5">
 
-                <TextBlock x:Name="oTitle" x:Uid="oTitle" Grid.Row="0" Grid.Column="0" Text="Kaotiña's Store" Style="{StaticResource TitleTextBlockStyle}" Foreground="{StaticResource TitleBrush}" HorizontalAlignment="Left" />
+                <TextBlock x:Name="oTitle" x:Uid="oTitle" Grid.Row="0" Grid.Column="0" Text="Kaotiña's Store" Style="{StaticResource TitleTextBlockStyle}" HorizontalAlignment="Left" />
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
 
@@ -100,15 +123,52 @@
                         </Path>
                     </HyperlinkButton>
                 </StackPanel>
+
+                <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource BorderBrush2}" />
             </Grid>
 
-            <!--products-->
-            <telerik:RadListView x:Name="listViewProducts" Grid.Row="1" Margin="0 5 0 0" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ItemsSource="{Binding CollectionProducts}" ItemTemplate="{StaticResource WrapItemTemplate}" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}">
-                <telerik:RadListView.LayoutDefinition>
-                    <listview:WrapLayoutDefinition ItemWidth="300" />
-                </telerik:RadListView.LayoutDefinition>
-            </telerik:RadListView>
-            
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--products-->
+                    <TextBlock x:Uid="oTitleProducts" Grid.Row="0" Grid.Column="0" Text="Products" Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Center" />
+
+                    <telerik:RadListView x:Name="listViewProducts" Grid.Row="1" Margin="0 5 0 0" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ItemsSource="{Binding CollectionProducts}" ItemTemplate="{StaticResource ProductItemTemplate}" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" Width="300">
+                        <telerik:RadListView.EmptyContent>
+                            <TextBlock x:Uid="oEmptyProductList" Text="Loading..." HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </telerik:RadListView.EmptyContent>
+                        <telerik:RadListView.LayoutDefinition>
+                            <listview:WrapLayoutDefinition ItemWidth="300" />
+                        </telerik:RadListView.LayoutDefinition>
+                    </telerik:RadListView>
+
+                    <!--Cart-->
+                    <TextBlock x:Uid="oTitleCart" Grid.Row="0" Grid.Column="2" Text="Cart" Margin="5" Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Left" />
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Margin="5">
+                        <TextBlock x:Uid="oCartTotal" Text="Total: " />
+                        <TextBlock Text="{Binding CartTotal, Converter={StaticResource TextCurrencyConverter}}" />
+                    </StackPanel>
+
+                    <telerik:RadListView x:Name="listViewCart" Grid.Row="1" Grid.Column="2" Margin="0 5 0 0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch" ItemsSource="{Binding CurrentCart}" ItemTemplate="{StaticResource CartItemTemplate}" SelectedItem="{Binding SelectedCartItem, Mode=TwoWay}" Width="300">
+                        <telerik:RadListView.EmptyContent>
+                            <TextBlock x:Uid="oEmptyCartList" Text="empty" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                        </telerik:RadListView.EmptyContent>
+                        <telerik:RadListView.LayoutDefinition>
+                            <listview:StackLayoutDefinition />
+                        </telerik:RadListView.LayoutDefinition>
+                    </telerik:RadListView>
+
+                </Grid>
+            </ScrollViewer>
         </Grid>
 
     </Grid>
